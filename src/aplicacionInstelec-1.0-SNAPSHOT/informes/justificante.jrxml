@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="justificante" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="justificante" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logotipo" class="java.lang.String"/>
+	<parameter name="firma" class="java.lang.Object"/>
+	<parameter name="bidiurl" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select *, avisos.observaciones as descripcionAviso from visitas left join avisos on visitas.idAviso = avisos.id join clientes on visitas.idcliente = clientes.id join motivos on visitas.idmotivo = motivos.id join trabajos on visitas.idtrabajo = trabajos.id
+where visitas.id = $P{justificante}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<field name="hora" class="java.lang.String"/>
+	<field name="idCliente" class="java.lang.Integer"/>
+	<field name="idMotivo" class="java.lang.Integer"/>
+	<field name="idTrabajo" class="java.lang.Integer"/>
+	<field name="observaciones" class="java.lang.String"/>
+	<field name="firma" class="java.lang.String"/>
+	<field name="firmado1" class="java.lang.String"/>
+	<field name="firmado2" class="java.lang.String"/>
+	<field name="enMantenimiento" class="java.lang.Integer"/>
+	<field name="conCargo" class="java.lang.Integer"/>
+	<field name="idAviso" class="java.lang.Integer"/>
+	<field name="avisoDe" class="java.lang.String"/>
+	<field name="referencia" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="codpostal" class="java.lang.String"/>
+	<field name="poblacion" class="java.lang.String"/>
+	<field name="provincia" class="java.lang.String"/>
+	<field name="cif" class="java.lang.String"/>
+	<field name="telefono1" class="java.lang.String"/>
+	<field name="telefono2" class="java.lang.String"/>
+	<field name="cuenta" class="java.lang.String"/>
+	<field name="correo1" class="java.lang.String"/>
+	<field name="correo2" class="java.lang.String"/>
+	<field name="correo3" class="java.lang.String"/>
+	<field name="correo4" class="java.lang.String"/>
+	<field name="correo5" class="java.lang.String"/>
+	<field name="motivo" class="java.lang.String"/>
+	<field name="trabajo" class="java.lang.String"/>
+	<field name="descripcionAviso" class="java.lang.String"/>
+	<title>
+		<band height="77" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="77" forecolor="#006699" backcolor="#666666"/>
+				<image>
+					<reportElement x="0" y="0" width="158" height="64"/>
+					<imageExpression><![CDATA[$P{logotipo}]]></imageExpression>
+				</image>
+				<elementGroup/>
+				<staticText>
+					<reportElement x="354" y="56" width="191" height="17"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[http://www.puertaautomatica.es]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="289" y="0" width="256" height="28"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Puertas Automáticas]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="289" y="28" width="256" height="28"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Control de Accesos]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="8" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="653" splitType="Stretch">
+			<staticText>
+				<reportElement x="171" y="7" width="90" height="18"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd &apos; de &apos; MMMMM &apos; de &apos; yyyy">
+				<reportElement x="171" y="25" width="240" height="20" forecolor="#666666"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="59" width="406" height="23" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Serif" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH.mm">
+				<reportElement x="345" y="7" width="66" height="18" forecolor="#666666"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="157" width="268" height="30" forecolor="#666666"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{motivo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="289" y="157" width="256" height="30" forecolor="#666666"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{trabajo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="5" y="207" width="540" height="45" isRemoveLineWhenBlank="true" forecolor="#666666">
+					<printWhenExpression><![CDATA[$F{descripcionAviso} != $F{observaciones}]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Serif" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcionAviso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="266" width="540" height="133" forecolor="#666666"/>
+				<textElement>
+					<font fontName="Serif" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="5" y="192" width="283" height="15"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OBSERVACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="142" width="257" height="15"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRABAJO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="142" width="268" height="15"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true" isItalic="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[MOTIVO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="552" width="555" height="52"/>
+				<textElement textAlignment="Justified">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Hemos realizado la intervención con el mejor criterio profesional, no obstante cierto tipo de averías no son subsanadas definitivamente con la primera intervención. INSTELEC le agradece que cualquier deficiencia que Ud. observe con los trabajos realizados y/o anomalías en la instalacion,  nos lo haga saber a la mayor brevedad posible mediante llamada al Telf. 608 937 558 o correo a : instelec@puertaautomatica.es]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="532" width="555" height="20" forecolor="#0000FF"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSTELEC = COMPROMISO DE CALIDAD, SEGURIDAD Y SERVICIO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="383" y="399" width="152" height="99"/>
+				<imageExpression><![CDATA[$P{firma}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="5" y="458" width="340" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{firmado1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="478" width="340" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{firmado2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="77" width="406" height="20" forecolor="#666666"/>
+				<textElement>
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="97" width="61" height="20" forecolor="#666666"/>
+				<textElement>
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codpostal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="66" y="97" width="345" height="20" forecolor="#666666"/>
+				<textElement>
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{poblacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="117" width="268" height="20" forecolor="#666666"/>
+				<textElement>
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{provincia}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="16" y="517" width="529" height="15" forecolor="#000000">
+					<printWhenExpression><![CDATA[new Boolean($F{enMantenimiento}.intValue()==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[El coste del servicio prestado, esta cubierto por su contrato de Mantenimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="500" width="529" height="17" forecolor="#FF0033">
+					<printWhenExpression><![CDATA[new Boolean($F{conCargo}.intValue()==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="11" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[En breve recibirá valoración económica de los servicios prestados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="632" width="555" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="9" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[IMPORTANTE: Ud. debe de archivar este documento, constituirán el registro de mantenimiento de su automatismo.
+El  registro de  mantenimiento  es obligatorio según establece  el Código Técnico de la Edificación.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="443" y="20" width="92" height="97"/>
+				<imageExpression><![CDATA[$P{bidiurl}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="604" width="555" height="28" forecolor="#FF3333"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Si desea estar presente en la próxima revisión/reparación de su puerta automática, por favor, envienos todos los datos a instelec@puertaautomatica.es para concertar la visita con la persona indicada.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="404" width="74" height="15"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aviso de]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="78" y="404" width="266" height="15" forecolor="#666666"/>
+				<textElement>
+					<font fontName="Serif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{avisoDe}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="424" width="74" height="15"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Referencia]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="79" y="424" width="265" height="15" forecolor="#666666"/>
+				<textElement>
+					<font fontName="Serif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{referencia}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="5" y="444" width="74" height="14"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Firmado por]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="54" width="425" height="83"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="137" width="283" height="50"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="283" y="137" width="272" height="50"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="425" y="0" width="130" height="137"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="161" y="0" width="264" height="54"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="161" height="54"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="187" width="555" height="212"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="399" width="354" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="419" width="354" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="439" width="354" height="59"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="354" y="399" width="201" height="99"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="498" width="555" height="32"/>
+			</rectangle>
+			<textField>
+				<reportElement x="289" y="117" width="122" height="20" forecolor="#666666" backcolor="#FFFFFF"/>
+				<textElement>
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cif}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="251" width="283" height="15"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REALIZADO]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="9" y="7" width="142" height="47"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="true" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{id}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="19" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="383" y="4" width="172" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

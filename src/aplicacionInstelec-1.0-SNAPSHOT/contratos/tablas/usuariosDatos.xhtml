@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view>
+
+        <h:head>
+            <title>Usuarios</title>
+            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <meta name="apple-mobile-web-app-capable" content="yes"/>
+            <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+            <meta http-equiv="cache-control" content="max-age=0" />
+            <meta http-equiv="cache-control" content="no-cache" />
+            <meta http-equiv="expires" content="0" />
+            <meta http-equiv="expires" content="Tue, 01 Jan 2000 1:00:00 GMT" />
+            <meta http-equiv="pragma" content="no-cache" /> 
+
+            <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/contratos.css" type="text/css" />
+
+        </h:head>
+
+        <h:body>
+
+            <div class="page">
+
+                <h:form id="formulario">
+
+                    <div class="header"> 
+                        <p:commandButton value="Volver" class="izquierda" action="usuariosLista.xhtml" />
+                        <p:commandButton value="Grabar" class="derecha"   action="usuariosLista.xhtml" actionListener="#{controladorUsuarios.usuariosGrabar}" />
+                    </div>
+
+                    <div class="content">
+
+                        <table width="100%">
+
+                            <tr>
+                                <td colspan="1" width="80px">
+                                    <p:outputLabel value = "Usuario" styleClass="label" /><br/>
+                                    <p:inputText maxlength="20" value="#{controladorUsuarios.usuario.usuario}" disabled="#{!controladorUsuarios.swNuevo}" />
+                                </td>
+                                <td colspan="1">
+                                    <p:outputLabel value = "Nombre" styleClass="label" /><br/>
+                                    <p:inputText maxlength="40" value="#{controladorUsuarios.usuario.nombre}" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <p:outputLabel value = "Clave" styleClass="label" /><br/>
+                                    <p:inputText maxlength="20" value="#{controladorUsuarios.usuario.clave}" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="1" width="80px">
+                                    <p:outputLabel value = "Nivel" styleClass="label" /><br/>
+                                    <p:inputText maxlength="10" value="#{controladorUsuarios.usuario.nivel}" />
+                                </td>
+                                <td colspan="1">
+                                    <p:outputLabel value = "Proceso" styleClass="label" /><br/>
+                                    <p:inputText maxlength="40" value="#{controladorUsuarios.usuario.proceso}" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <p:separator/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2" height="80" valign="top">
+                                    <p:messages />
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <p:tabView style="font-size: 14px;">
+
+                            <p:tab title="Rutas">
+
+                                <p:dataList var="lista" 
+                                            value="#{controladorUsuarios.listaUsuariosRutas}"
+                                            emptyMessage="No existen registros" >
+                                    <f:facet name="header">Rutas Permitidas</f:facet>
+
+                                    <p:outputLabel value="#{lista.ruta}" />
+                                    <p:inputSwitch value="#{lista.permitida}" class="derecha" immediate="true"
+                                                   style="width:30px;" onLabel="si" offLabel="no" />
+                                </p:dataList>                                                
+
+
+                            </p:tab>
+
+                            <p:tab title="Horario">
+
+                                <table width="100%">
+                                    <tr>
+                                        <td colspan="4">
+                                            <p:dataTable var="lista" 
+                                                         value="#{controladorUsuarios.listaHorario}"
+                                                         emptyMessage="No existen registros" >
+                                                <f:facet name="Header">Horario Permitido</f:facet>
+
+                                                <p:column headerText="Dia" >
+                                                    <p:outputLabel value="#{lista.diaSemana}" class="izquierda"/>
+                                                </p:column>
+
+                                                <p:column headerText="Desde" >
+                                                    <p:outputLabel value="#{lista.desde}" class="derecha"/>
+                                                </p:column>
+
+                                                <p:column headerText="Hasta" >
+                                                    <p:outputLabel value="#{lista.hasta}" class="derecha"/>
+                                                </p:column>
+
+                                                <p:column headerText="" >
+                                                    <p:commandButton value ="-" actionListener="#{controladorUsuarios.horarioEliminar}" class="center" update="formulario">
+                                                        <f:attribute name="data-id" value="#{lista.id}" />                                                        
+                                                        <p:confirm header="Confirmar Borrado" message="Eliminar registro Horario ?" icon="ui-icon-alert" />
+                                                    </p:commandButton>
+                                                </p:column>
+
+                                            </p:dataTable>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <p:separator />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p:selectOneMenu value="#{controladorUsuarios.nuevoHorario.dia}" >
+                                                <f:selectItems value="#{controladorUsuarios.listaDias}" />
+                                            </p:selectOneMenu>
+                                        </td>
+                                        <td>                                
+                                            <p:spinner min="0" max="23" size="2" value="#{controladorUsuarios.nuevoHorario.desde}"/>
+                                        </td>
+                                        <td>
+                                            <p:spinner min="0" max="23" size="2" value="#{controladorUsuarios.nuevoHorario.hasta}"/>
+                                        </td>
+                                        <td>
+                                            <p:commandButton value=" + " actionListener="#{controladorUsuarios.horarioAgregar}" update="formulario" />
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </p:tab>
+
+                        </p:tabView>
+                        
+                        <br/><br/><br/><br/><br/>
+
+                    </div>
+
+                    <div class="footer">
+                        <p:commandButton value="Eliminar" actionListener="#{controladorUsuarios.usuariosBorrar}"
+                                         action="/contratos/tablas/usuariosLista.xhtml"
+                                         styleClass="derecha" >
+                            <p:confirm header="Confirmar Borrado" message="Desea borrar el dato actual ?" icon="ui-icon-alert" />
+                        </p:commandButton>
+
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>                        
+                    </div>
+
+                </h:form>
+
+            </div>
+
+        </h:body>
+
+    </f:view>
+
+</html>

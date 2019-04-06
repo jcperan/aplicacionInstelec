@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view>
+
+        <h:head>
+            <title>Login</title>
+            
+            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <meta name="apple-mobile-web-app-capable" content="yes"/>
+            <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+            <meta http-equiv="cache-control" content="max-age=0" />
+            <meta http-equiv="cache-control" content="no-cache" />
+            <meta http-equiv="expires" content="0" />
+            <meta http-equiv="expires" content="Tue, 01 Jan 2000 1:00:00 GMT" />
+            <meta http-equiv="pragma" content="no-cache" /> 
+
+            <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/contratos.css?version=#{ControlLogin.fechaActual}" type="text/css" />
+
+        </h:head>
+
+        <h:body>
+
+            <div class="page">
+
+                <h:form id="formulario">
+
+                    <div class="header" >
+                        <center>
+                            <h:outputLabel value="Control de Mantenimientos" />
+                        </center>
+                    </div>
+
+                    <div class="content">
+
+                        <br/><br/><br/>
+                        <p:focus for="txtUSER" />
+
+                        <center>
+                            <div class="centro" style="width: 280px;">
+                                <table width="300" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td colspan="3" align="center" valign="top" bgcolor="gray">
+                                            <br/>
+                                            <img src="#{facesContext.externalContext.requestContextPath}/recursos/instelec.png" />
+                                            <br/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" bgcolor="gray">
+                                            <br/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20%" bgcolor="gray">
+                                        </td>
+                                        <td bgcolor="gray">
+                                            <p:outputLabel value="Usuario" />
+                                            <br/>
+                                            <p:inputText id="txtUSER" size="12" value="#{ControlLogin.USER}" />
+                                        </td>
+                                        <td width="20%" bgcolor="gray">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" bgcolor="gray">
+                                            <br/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20%" bgcolor="gray">
+                                        </td>
+                                        <td bgcolor="gray">
+                                            <p:outputLabel value="Password" />
+                                            <br/>
+                                            <p:password id="txtPASS" size="12" value="#{ControlLogin.PASS}" />
+                                        </td>
+                                        <td width="20%" bgcolor="gray">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" bgcolor="gray">
+                                            <br/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="gray">
+                                        </td>
+                                        <td bgcolor="gray" align="center">
+                                            <p:commandButton value=" Login " action="#{ControlLogin.getDestino}"  actionListener="#{ControlLogin.cmdLOGIN}" styleClass="button"/>
+                                        </td>
+                                        <td bgcolor="gray">
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" bgcolor="gray">
+                                            <br/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/>
+                            <br/>
+
+                        </center>
+
+                        <br/>
+
+                    </div>
+
+                    <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                    </p:messages>
+
+                </h:form>
+
+            </div>
+
+        </h:body>
+
+    </f:view>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view>
+
+        <h:head>
+            <title>Usuarios</title>
+            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <meta name="apple-mobile-web-app-capable" content="yes"/>
+            <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+            <meta http-equiv="cache-control" content="max-age=0" />
+            <meta http-equiv="cache-control" content="no-cache" />
+            <meta http-equiv="expires" content="0" />
+            <meta http-equiv="expires" content="Tue, 01 Jan 2000 1:00:00 GMT" />
+            <meta http-equiv="pragma" content="no-cache" /> 
+
+            <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/contratos.css" type="text/css" />
+
+        </h:head>
+
+        <h:body>
+
+            <div class="page">
+
+                <h:form id="formulario">
+
+                    <div class="header" > 
+                        <p:commandButton class="izquierda" value="Volver" action="/contratos/opciones.xhtml" />
+                        <p:commandButton class="derecha"   value="Nuevo"  action="#{controladorUsuarios.usuariosNuevo}" />
+                    </div>
+                    
+                    <div class="content">
+
+                        <table width="100%">
+
+                            <tr>
+
+                                <td valign="top">
+
+                                    <table width="100%">
+
+                                        <tr>
+                                            <td colspan="2">
+                                                    <p:dataList var="lista" style="padding: 1px !important;"
+                                                                value="#{controladorUsuarios.listaUsuarios}"
+                                                                emptyMessage="No existen registros" >
+                                                        <p:commandLink actionListener="#{controladorUsuarios.usuariosEditar}"
+                                                                       action="usuariosDatos.xhtml">
+                                                            <f:facet name="id">
+                                                                <f:param value="#{lista.usuario}" />
+                                                            </f:facet>
+                                                            <table width="100%">
+                                                                <tr>
+                                                                    <td width="80px">
+                                                                        <p:outputLabel value="#{lista.usuario}" />
+                                                                    </td>
+                                                                    <td>
+                                                                        <p:outputLabel value="#{lista.nombre}" />
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </p:commandLink>
+                                                    </p:dataList>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="2" height="80" valign="top">
+                                                <p:messages />
+                                            </td>
+                                        </tr>
+
+                                    </table>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </h:form>
+
+            </div>
+
+        </h:body>
+    </f:view>
+
+</html>

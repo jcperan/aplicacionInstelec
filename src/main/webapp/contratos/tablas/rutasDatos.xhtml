@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view>
+
+        <h:head>
+            <title>Rutas</title>
+            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <meta name="apple-mobile-web-app-capable" content="yes"/>
+            <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+            <meta http-equiv="cache-control" content="max-age=0" />
+            <meta http-equiv="cache-control" content="no-cache" />
+            <meta http-equiv="expires" content="0" />
+            <meta http-equiv="expires" content="Tue, 01 Jan 2000 1:00:00 GMT" />
+            <meta http-equiv="pragma" content="no-cache" /> 
+
+            <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/contratos.css" type="text/css" />
+
+        </h:head>
+
+        <h:body>
+
+            <div class="page">
+
+                <h:form id="formulario">
+
+                    <div class="header"> 
+                        <p:commandButton value="Volver" class="izquierda" action="rutasLista.xhtml" />
+                        <p:commandButton value="Grabar" class="derecha"   action="rutasLista.xhtml" actionListener="#{controladorRutas.rutasGrabar}" />
+                    </div>
+
+                    <div class="content">
+
+                        <table width="100%">
+
+                            <tr>
+
+                                <td colspan="2" valign="top">
+
+                                    <table width="100%">
+
+                                        <tr>
+                                            <td colspan="2">
+                                                <p:outputLabel value = "Denominacion de la ruta" styleClass="label" /><br/>
+                                                <p:inputText maxlength="20" value="#{controladorRutas.ruta.denominacion}"/>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="2" height="80" valign="top">
+                                                <p:messages />
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    <div class="footer">
+                        <p:commandButton value="Eliminar" actionListener="#{controladorRutas.rutasBorrar}"
+                                         action="/contratos/tablas/rutasLista.xhtml"
+                                         styleClass="derecha" >
+                            <p:confirm header="Confirmar Borrado" message="Desea borrar el dato actual ?" icon="ui-icon-alert" />
+                        </p:commandButton>
+
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>                        
+                    </div>
+
+                </h:form>
+
+            </div>
+            
+        </h:body>
+        
+    </f:view>
+
+</html>

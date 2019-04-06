@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view>
+
+        <h:head>
+            <title>VISITAS</title>
+            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <meta name="apple-mobile-web-app-capable" content="yes"/>
+            <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+            <meta http-equiv="cache-control" content="max-age=0" />
+            <meta http-equiv="cache-control" content="no-cache" />
+            <meta http-equiv="expires" content="0" />
+            <meta http-equiv="expires" content="Tue, 01 Jan 2000 1:00:00 GMT" />
+            <meta http-equiv="pragma" content="no-cache" /> 
+
+            <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/contratos.css" type="text/css" />
+
+        </h:head>
+
+        <h:body>
+
+            <div class="page">
+
+                <h:form id="formulario">
+
+                    <div class="header" > 
+                        <p:commandButton value="Volver" class="izquierda" action="/contratos/opciones.xhtml" 
+                                         icon="icono-volver" />
+                        <p:commandButton value="Salir"  class="derecha"
+                                         icon="icono-salir" iconPos="right"
+                                         action="/login.xhtml" />
+                        <br/><br/><br/>
+                        <div>
+                             <table>
+                                <tr>
+                                    <td width="80%" colspan="1">
+                                        <h:outputLabel value=" Pendientes" for="checkPendientes" /><br/>
+                                        <p:inputSwitch id="checkPendientes" value="#{controladorVisitas.pendientes}" 
+                                                       style="width:30px;" >
+                                            <p:ajax event="change" update="formulario" />
+                                        </p:inputSwitch>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <div class="content">
+
+                        <br/><br/><br/>
+                        <table width="100%">
+                            <tr>
+                                <td width="80%">
+                                    <p:inputText id="txtCONSULTA" value="#{controladorVisitas.datoConsulta}" />
+                                </td>
+                                <td align="right" >
+                                    <p:commandButton id="cmdBuscar" value=" Buscar " styleClass="button" ajax="false"
+                                                     onclick="submit()" >
+                                    </p:commandButton>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <ul id="listaAgenda" style="padding: 0px !important;">
+                            <p:dataList paginator="true" rows="20"
+                                        currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords}" paginatorAlwaysVisible="true"
+                                        paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+                                        value="#{controladorVisitas.listaVisitas}" var="lista">
+                                <p:commandLink actionListener="#{controladorVisitas.visitasEditar}"
+                                               action="visitasEditar.xhtml">
+                                    <f:facet name="id">
+                                        <f:param value="#{lista.id}" />
+                                    </f:facet>
+
+                                    <h3><h:outputText value="#{lista.clientes.nombre}" /></h3>
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="25px" valign="top">
+                                                <h:graphicImage value="/recursos/iconos/visitas.png"/>
+                                            </td>
+                                            <td width="5px"></td>
+                                            <td>
+                                                <div class="izquierda">
+                                                    <h:outputText value="#{lista.fecha}" >
+                                                        <f:convertDateTime pattern="dd-MMM-yyyy" />
+                                                    </h:outputText>
+                                                </div>
+                                                <div class="derecha">
+                                                    [<h:outputText value="#{lista.clientes.claveMantenimiento}" />]
+                                                </div>
+                                                <div class="clear">
+                                                    <p:outputLabel value="#{lista.observaciones}" style="white-space: normal !important;"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>                                                    
+                                </p:commandLink>
+                            </p:dataList>
+                        </ul>
+
+                    </div>
+                    
+                </h:form>
+
+            </div>
+
+        </h:body>
+        
+    </f:view>
+    
+</html>

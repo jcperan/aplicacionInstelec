@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view>
+
+        <h:head>
+            <title>VISITAS</title>
+            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <meta name="apple-mobile-web-app-capable" content="yes"/>
+            <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+            <meta http-equiv="cache-control" content="max-age=0" />
+            <meta http-equiv="cache-control" content="no-cache" />
+            <meta http-equiv="expires" content="0" />
+            <meta http-equiv="expires" content="Tue, 01 Jan 2000 1:00:00 GMT" />
+            <meta http-equiv="pragma" content="no-cache" /> 
+
+            <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/recursos/contratos.css" type="text/css" />
+
+            <style>
+                #cargando {
+                    background-color: #cccccc;
+                    bottom: 0px;
+                    filter: alpha(opacity=50);
+                    opacity: 0.5;
+                    height: 100%;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    visibility: hidden;
+                    width:  100%;
+                    height: 1500px;
+                    z-index: 1
+                }
+            </style>
+
+
+
+            <script type="text/javascript">
+
+                function DesactivaPantalla(control) {
+
+                    var ctrl2 = document.getElementById("cargando");
+                    ctrl2.style.visibility = 'visible';
+                    return true;
+                }
+
+            </script>
+            
+        </h:head>
+
+        <h:body>
+
+            <div class="page">
+
+                <h:form id="formulario">
+
+                    <div class="header" > 
+                        <p:commandButton value="Volver" class="izquierda" 
+                                         icon="icono-volver" iconPos="left"
+                                         action="visitasLista.xhtml" />
+                        <p:commandButton value="Grabar" class="derecha"
+                                         icon="icono-grabar" iconPos="right"
+                                         action="#{controladorVisitas.visitasGrabar}" />
+                    </div>
+
+
+                    <div class="content">
+
+                        <div class="cargando" id="cargando">
+                            <center>
+                                <br/><br/><br/><br/><br/>
+                                <br/><br/><br/><br/><br/>
+                                <img src="#{facesContext.externalContext.requestContextPath}/recursos/ajax-loader.gif"/>
+                            </center>
+                        </div>
+
+                        <table width="100%">
+
+                            <tr>
+                                <td colspan="2">
+                                    <p:outputLabel value = "CLIENTE" styleClass="label" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <h1>
+                                        <p:outputLabel value="#{controladorVisitas.visita.clientes.nombre}" />
+                                    </h1>
+                                    <h3>
+                                        <br/><h:outputText styleClass="selector" value="#{controladorVisitas.visita.clientes.direccion}" />
+                                        <br/><h:outputText styleClass="selector" value="#{controladorVisitas.visita.clientes.codpostal} #{controladorVisitas.visita.clientes.poblacion}" />
+                                        <br/><h:outputText styleClass="selector" value="#{controladorVisitas.visita.clientes.provincia}" />
+                                        <br/>
+                                        <a href="tel:#{ControladorContratos.objeto.clientes.telefono2}">
+                                            <h:outputText styleClass="selector" value="#{controladorVisitas.visita.clientes.telefono1}"/>
+                                        </a>
+                                        <p:outputLabel value=" - "/>
+                                        <a href="tel:#{ControladorContratos.objeto.clientes.telefono2}">
+                                            <h:outputText styleClass="selector" value="#{controladorVisitas.visita.clientes.telefono2}"/>
+                                        </a>
+                                    </h3>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2"><p:separator/></td>
+                            </tr>
+
+                            <tr>
+                                <td width="120px">
+                                    <p:outputLabel value = "FECHA" class="label" /><br/>
+                                    <p:calendar value="#{controladorVisitas.visita.fecha}" pattern="dd-MM-yyyy" />
+                                </td>
+                                <td>
+                                    <p:outputLabel value = "HORA" class="label" /><br/>
+                                    <p:inputText class="input" size="8" value="#{controladorVisitas.visita.hora}" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <h:outputText value = "MOTIVO" styleClass="label" /><br/>
+                                    <p:selectOneMenu id="selRuta" value="#{controladorVisitas.visita.motivos.id}" 
+                                                     style="width:90%;"
+                                                     disabled="#{!ControlLogin.nivelAdministrador}" >
+                                        <f:selectItems  value="#{ControladorContratos.objeto.listaMotivos}" />
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <p:outputLabel value = "TRABAJO REALIZADO" styleClass="label" /><br/>
+                                    <p:selectOneMenu id="selTrabajo" value="#{controladorVisitas.visita.trabajos.id}" 
+                                                     style="width:90%;"
+                                                     disabled="#{!ControlLogin.nivelAdministrador}" >
+                                        <f:selectItems  value="#{ControladorContratos.objeto.listaTrabajos}" />
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2"><p:separator/></td>
+                            </tr>
+
+                            <tr>
+                                <td >
+                                    <p:outputLabel value="Mantenimiento" for="checkMantenimiento" /><br/>
+                                    <p:inputSwitch id="checkMantenimiento" value="#{controladorVisitas.visita.enMantenimiento}" 
+                                                   style="width:30px;" onLabel="si" offLabel="no" />
+                                </td>
+                                <td>
+                                    <p:outputLabel value="Con Cargo" for="checkConCargo" /><br/>
+                                    <p:inputSwitch id="checkConCargo" value="#{controladorVisitas.visita.conCargo}" 
+                                                   style="width:30px;" onLabel="si" offLabel="no" />
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td colspan="2"><p:separator/></td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <p:outputLabel value = "DESCRIPCION DEL AVISO" styleClass="label" /><br/>
+                                    <h:inputTextarea rows="6" style="width: 100%; height:220px !important;" 
+                                                     rendered="#{ControlLogin.nivelAdministrador}" 
+                                                     value="#{controladorVisitas.visita.descripcionAviso}"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <p:outputLabel value = "TRABAJO REALIZADO - DESCRIPCION OPERARIO" styleClass="label" /><br/>
+                                    <h:inputTextarea rows="6" style="width: 100%; height:220px !important;" 
+                                                     rendered="#{ControlLogin.nivelAdministrador}" 
+                                                     value="#{controladorVisitas.visita.descripcionOperario}"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <p:outputLabel value = "TRABAJO REALIZADO - DESCRIPCION CLIENTE" styleClass="label" /><br/>
+                                    <h:inputTextarea rows="6" style="width: 100%; height:220px !important;" 
+                                                     rendered="#{ControlLogin.nivelAdministrador}" 
+                                                     value="#{controladorVisitas.visita.observaciones}"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2"><p:separator/></td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <p:outputLabel value="Su firma no implica conformidad con el trabajo realizado, solo reconoce la presencia del tecnico." style="font-weight:bold;"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2"><p:separator/></td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <p:inputText class="input" size="40" maxlength="40" value="#{controladorVisitas.visita.firmado1}" />
+                                    <br/>
+                                    <p:inputText class="input" size="40" maxlength="40" value="#{controladorVisitas.visita.firmado2}" />
+                                    <br/><br/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2"><p:separator/></td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <center>
+                                        <p:signature guideline="true" style="width:300px;height:200px" widgetVar="sig" 
+                                                     value="#{controladorVisitas.visita.firma}" class="derecha" >
+
+                                        </p:signature>
+                                    </center>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <p:commandButton value="Borrar Firma" icon="ui-icon-close" type="button" onclick="PF('sig').clear()"/>
+                                    <br/><br/><br/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2"><p:separator/></td>
+                            </tr>
+
+                            <tr>				
+                                <td width="10px">
+                                    <p:inputSwitch value="#{ControladorContratos.enviar1}" 
+                                                   style="width:30px;" onLabel="si" offLabel="no" />
+                                </td>
+                                <td>
+                                    <p:inputText maxlength="40" value="#{controladorVisitas.visita.clientes.correo1}" />
+                                </td>
+                            </tr>
+
+                            <tr>				
+                                <td width="10px">
+                                    <p:inputSwitch value="#{ControladorContratos.enviar2}" 
+                                                   style="width:30px;" onLabel="si" offLabel="no" />
+                                </td>
+                                <td>
+                                    <p:inputText maxlength="40" value="#{controladorVisitas.visita.clientes.correo2}" />
+                                </td>
+                            </tr>
+
+                            <tr>				
+                                <td width="10px">
+                                    <p:inputSwitch value="#{ControladorContratos.enviar3}" 
+                                                   style="width:30px;" onLabel="si" offLabel="no" />
+                                </td>
+                                <td>
+                                    <p:inputText maxlength="40" value="#{controladorVisitas.visita.clientes.correo3}" />
+                                </td>
+                            </tr>
+
+                            <tr>				
+                                <td width="10px">
+                                    <p:inputSwitch value="#{ControladorContratos.enviar4}" 
+                                                   style="width:30px;" onLabel="si" offLabel="no" />
+                                </td>
+                                <td>
+                                    <p:inputText maxlength="40" value="#{controladorVisitas.visita.clientes.correo4}" />
+                                </td>
+                            </tr>
+
+                            <tr>				
+                                <td width="10px">
+                                    <p:inputSwitch value="#{ControladorContratos.enviar5}" 
+                                                   style="width:30px;" onLabel="si" offLabel="no" />
+                                </td>
+                                <td>
+                                    <p:inputText maxlength="40" value="#{controladorVisitas.visita.clientes.correo5}" />
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td colspan="2" height="80" valign="top">
+                                    <p:messages />
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                    <div class="footer">
+                        <p:commandButton value="Grabar y Enviar" class="derecha" action="#{controladorVisitas.visitasEnviar}" onclick="DesactivaPantalla();"/>
+                    </div>
+                    
+                </h:form>
+
+            </div>
+
+        </h:body>
+
+    </f:view>
+
+</html>
