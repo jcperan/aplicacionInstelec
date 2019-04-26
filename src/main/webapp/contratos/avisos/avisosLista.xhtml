@@ -71,7 +71,8 @@
                                         </p:inputSwitch>
                                     </td>
                                     <td width="10%" align="right">
-                                        <p:selectOneMenu id="selRuta" value="#{ControladorContratos.rutaSeleccionada}" >
+                                        <p:selectOneMenu id="selRuta" value="#{ControladorContratos.rutaSeleccionada}"
+                                                         disabled="#{!ControlLogin.nivelAdministrador}" >
                                             <f:selectItems  value="#{controladorAgenda.listaRutasUsuario}" />
                                             <p:ajax event="change" update="formulario" />
                                         </p:selectOneMenu>

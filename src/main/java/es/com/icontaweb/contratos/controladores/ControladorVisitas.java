@@ -91,6 +91,7 @@ public class ControladorVisitas implements Serializable {
             if (datoConsulta.equals(null)) datoConsulta = "";
             String sqlquery = "select v from Visitas v where v.clientes.nombre like :nombre ";
             if (pendientes) sqlquery += "and v.pendiente = 1";
+            sqlquery += " order by v.fecha desc ";
             Query q = em.createQuery(sqlquery);
             q.setParameter("nombre", "%" + datoConsulta + "%");
             listaVisitas = q.getResultList();

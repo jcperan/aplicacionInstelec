@@ -256,6 +256,11 @@ public class ControladorAgenda implements Serializable {
         this.controladorContratos.setCliente(this.agenda.getIdCliente());
         this.controladorContratos.getObjeto().LeerCliente(this.agenda.getIdCliente());
         this.controladorContratos.setDescripcion(this.agenda.getDescripcion());
+        this.controladorContratos.setSp(this.agenda.getSp());
+        this.controladorContratos.setMotivo(1);
+        this.controladorContratos.setTrabajo(2);
+        this.controladorContratos.setMantenimiento(true);
+        this.controladorContratos.setCargo(false);
 
         // --- Procesar la cita actual y crear nueva entrada -------------------------------------
         Calendar calendar = new GregorianCalendar();

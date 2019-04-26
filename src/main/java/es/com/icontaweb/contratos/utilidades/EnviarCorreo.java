@@ -19,6 +19,10 @@ import javax.mail.internet.MimeMultipart;
 import javax.servlet.ServletContext;
 
 import es.com.icontaweb.contratos.objetos.Contratos;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 public class EnviarCorreo {
 
@@ -87,10 +91,20 @@ public class EnviarCorreo {
             imagen.attachFile(realPath + "/recursos/lorca-instelec.jpg");
             imagen.setHeader("Content-ID", "<image>");
 
+            String flname = "justificante";
+            String spname = objeto.getVisitas().getSp().trim();
+            if (!"".equals(spname)) {
+                Path file1 = FileSystems.getDefault().getPath(realPath + "/informes/" + flname + ".pdf");
+                Path file2 = FileSystems.getDefault().getPath(realPath + "/informes/" + spname + ".pdf");
+                Files.copy(file1, file2, StandardCopyOption.REPLACE_EXISTING);
+                flname = spname;
+            }
+
+            
             // Se compone el adjunto con el justificante
             BodyPart adjunto = new MimeBodyPart();
-            adjunto.setDataHandler(new DataHandler(new FileDataSource(realPath + "/informes/justificante.pdf")));
-            adjunto.setFileName("justificante.pdf");
+            adjunto.setDataHandler(new DataHandler(new FileDataSource(realPath + "/informes/" + flname + ".pdf")));
+            adjunto.setFileName(flname);
 
             // Se compone el adjunto con el mantenimiento
             BodyPart adjunto2 = new MimeBodyPart();
@@ -112,7 +126,11 @@ public class EnviarCorreo {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(destino));
-            message.setSubject("Justificante " + objeto.getClientes().getNombre());
+            if (spname != "") {
+                message.setSubject(spname);
+            } else {
+                message.setSubject("Justificante " + objeto.getClientes().getNombre());
+            }
             message.setContent(multiParte);
 
             // Lo enviamos.
@@ -123,6 +141,13 @@ public class EnviarCorreo {
 
             // Cierre.
             t.close();
+            
+            // Eliminar arhivo pdf 
+            if (spname != "") {
+                Path file2 = FileSystems.getDefault().getPath(realPath + "/informes/" + spname + ".pdf");
+                Files.delete(file2);
+            }
+            
         } catch (Exception e) {
             System.out.println("icontaweb : " + (new Date()).toString() + " Error Envio Correo " + e.getMessage());
         }

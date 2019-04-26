@@ -49,6 +49,7 @@ public class Visitas implements Serializable {
     
     private String descripcionOperario;
     private String descripcionAviso;
+    private String sp;
 
     //bi-directional many-to-one association to Clientes
     @ManyToOne
@@ -202,6 +203,14 @@ public class Visitas implements Serializable {
 
     public void setDescripcionAviso(String descripcionAviso) {
         this.descripcionAviso = descripcionAviso;
+    }
+
+    public String getSp() {
+        return sp;
+    }
+
+    public void setSp(String sp) {
+        this.sp = sp;
     }
 
 }

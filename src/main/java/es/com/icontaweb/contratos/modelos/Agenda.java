@@ -35,6 +35,8 @@ public class Agenda implements Serializable {
     private int idCliente;
     private int periodicidad;
     
+    private String sp;
+    
     //bi-directional many-to-one association to Clientes
     @ManyToOne
     @JoinColumn(name = "idCliente", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
@@ -114,6 +116,14 @@ public class Agenda implements Serializable {
 
     public void setPeriodicidad(int periodicidad) {
         this.periodicidad = periodicidad;
+    }
+
+    public String getSp() {
+        return sp;
+    }
+
+    public void setSp(String sp) {
+        this.sp = sp;
     }
 
 }

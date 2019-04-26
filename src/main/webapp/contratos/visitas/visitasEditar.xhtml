@@ -51,7 +51,7 @@
                 }
 
             </script>
-            
+
         </h:head>
 
         <h:body>
@@ -84,29 +84,59 @@
 
                             <tr>
                                 <td colspan="2">
-                                    <p:outputLabel value = "CLIENTE" styleClass="label" />
+                                    <ul>
+                                        <li>
+                                            <table>
+                                                <tr>
+                                                    <td colspan="3">
+                                                        <h1>
+                                                            <center>
+                                                                <p:outputLabel value="#{controladorVisitas.visita.clientes.nombre}" />
+                                                            </center>
+                                                        </h1>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="25px">
+                                                        <h:graphicImage value="/recursos/iconos/cliente.png"/>
+                                                    </td>
+                                                    <td width="5px"></td>
+                                                    <td>
+                                                        <h3>
+                                                            <br/><h:outputText styleClass="selector" value="#{controladorVisitas.visita.clientes.direccion}" />
+                                                            <br/><h:outputText styleClass="selector" value="#{controladorVisitas.visita.clientes.codpostal} #{controladorVisitas.visita.clientes.poblacion}" />
+                                                            <br/><h:outputText styleClass="selector" value="#{controladorVisitas.visita.clientes.provincia}" />
+                                                            <br/>
+                                                            <a href="tel:#{ControladorContratos.objeto.clientes.telefono2}">
+                                                                <h:outputText styleClass="selector" value="#{controladorVisitas.visita.clientes.telefono1}"/>
+                                                            </a>
+                                                            <p:outputLabel value=" - "/>
+                                                            <a href="tel:#{ControladorContratos.objeto.clientes.telefono2}">
+                                                                <h:outputText styleClass="selector" value="#{controladorVisitas.visita.clientes.telefono2}"/>
+                                                            </a>
+                                                        </h3>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </li>
+                                    </ul>
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td colspan="2"><p:separator/></td>
+                            </tr>
+
                             <tr>
                                 <td colspan="2">
-                                    <h1>
-                                        <p:outputLabel value="#{controladorVisitas.visita.clientes.nombre}" />
-                                    </h1>
-                                    <h3>
-                                        <br/><h:outputText styleClass="selector" value="#{controladorVisitas.visita.clientes.direccion}" />
-                                        <br/><h:outputText styleClass="selector" value="#{controladorVisitas.visita.clientes.codpostal} #{controladorVisitas.visita.clientes.poblacion}" />
-                                        <br/><h:outputText styleClass="selector" value="#{controladorVisitas.visita.clientes.provincia}" />
-                                        <br/>
-                                        <a href="tel:#{ControladorContratos.objeto.clientes.telefono2}">
-                                            <h:outputText styleClass="selector" value="#{controladorVisitas.visita.clientes.telefono1}"/>
-                                        </a>
-                                        <p:outputLabel value=" - "/>
-                                        <a href="tel:#{ControladorContratos.objeto.clientes.telefono2}">
-                                            <h:outputText styleClass="selector" value="#{controladorVisitas.visita.clientes.telefono2}"/>
-                                        </a>
-                                    </h3>
+                                    <h:outputText value = "Situacion (SP)" styleClass="label" />
+                                    <br/>
+                                    <h:inputTextarea rows="3" style="width:100%;height:60px;"
+                                                     disabled="#{!ControlLogin.nivelAdministrador}"
+                                                     value="#{controladorVisitas.visita.sp}" 
+                                                     />
                                 </td>
-                            </tr>
+                            </tr>                                        
 
                             <tr>
                                 <td colspan="2"><p:separator/></td>
@@ -307,7 +337,7 @@
                     <div class="footer">
                         <p:commandButton value="Grabar y Enviar" class="derecha" action="#{controladorVisitas.visitasEnviar}" onclick="DesactivaPantalla();"/>
                     </div>
-                    
+
                 </h:form>
 
             </div>

@@ -90,6 +90,7 @@ public class ControladorContratos implements Serializable {
     private Integer motivo;
     private Integer trabajo;
     private String descripcion;
+    private String sp;
     
     private String descripcionOperario;
     private String descripcionAviso;
@@ -136,6 +137,14 @@ public class ControladorContratos implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public String getSp() {
+        return sp;
+    }
+
+    public void setSp(String sp) {
+        this.sp = sp;
+    }
+    
     public String getDescripcionOperario() {
         return descripcionOperario;
     }
@@ -315,6 +324,7 @@ public class ControladorContratos implements Serializable {
         objeto.getVisitas().setPendiente(true);
         objeto.getVisitas().setDescripcionAviso(descripcionAviso);
         objeto.getVisitas().setDescripcionOperario(descripcionOperario);
+        objeto.getVisitas().setSp(sp);
         objeto.GrabaVisita();
         
         if (idAviso != 0) {
@@ -345,7 +355,7 @@ public class ControladorContratos implements Serializable {
             this.GeneraMantenimiento(objeto.getVisitas().getId());
             informe.GeneraMantenimiento(objeto.getVisitas().getId(), imagen);
         }
-
+        
         String destino = "";
         EnviarCorreo mensaje = new EnviarCorreo("instelec@puertaautomatica.es", objeto, swMantenimiento);
         if (cargo)   mensaje.EnviarMensaje("cobrosinstelec@gmail.com", objeto, swMantenimiento);

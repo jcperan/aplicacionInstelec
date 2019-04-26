@@ -24,7 +24,7 @@
     
     <error-page>
         <exception-type>javax.faces.application.ServletException</exception-type>
-        <location>/index.xhtml</location>
+        <location>/aplicacionInstelec/faces/index.xhtml</location>
     </error-page> 
    
 </web-app>

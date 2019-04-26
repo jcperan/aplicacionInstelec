@@ -33,7 +33,7 @@
                         <p:commandButton value="Volver" class="izquierda" 
                                          icon="icono-volver" iconPos="left"
                                          action="/contratos/opciones.xhtml" />
-                        
+
                         <p:commandButton value="Grabar" class="derecha"
                                          icon="icono-grabar" iconPos="right"
                                          action="#{ControladorContratos.ACEPTAR}" />
@@ -46,27 +46,42 @@
 
                             <tr>
                                 <td colspan="2">
-                                    <p:outputLabel value = "CLIENTE" styleClass="label" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <h1>
-                                        <p:outputLabel value="#{ControladorContratos.objeto.clientes.nombre}" />
-                                    </h1>
-                                    <h3>
-                                        <br/><h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.direccion}" />
-                                        <br/><h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.codpostal} #{ControladorContratos.objeto.clientes.poblacion}" />
-                                        <br/><h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.provincia}" />
-                                        <br/>
-                                        <a href="tel:#{ControladorContratos.objeto.clientes.telefono2}">
-                                            <h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.telefono1}"/>
-                                        </a>
-                                        <p:outputLabel value=" - "/>
-                                        <a href="tel:#{ControladorContratos.objeto.clientes.telefono2}">
-                                            <h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.telefono2}"/>
-                                        </a>
-                                    </h3>
+                                    <ul>
+                                        <li>
+                                            <table>
+                                                <tr>
+                                                    <td colspan="3">
+                                                        <h1>
+                                                            <center>
+                                                                <p:outputLabel value="#{ControladorContratos.objeto.clientes.nombre}" styleClass="center" />
+                                                            </center>
+                                                        </h1>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="25px">
+                                                        <h:graphicImage value="/recursos/iconos/cliente.png"/>
+                                                    </td>
+                                                    <td width="5px"></td>
+                                                    <td>
+                                                        <h3>
+                                                            <br/><h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.direccion}" />
+                                                            <br/><h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.codpostal} #{ControladorContratos.objeto.clientes.poblacion}" />
+                                                            <br/><h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.provincia}" />
+                                                            <br/>
+                                                            <a href="tel:#{ControladorContratos.objeto.clientes.telefono2}">
+                                                                <h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.telefono1}"/>
+                                                            </a>
+                                                            <p:outputLabel value=" - "/>
+                                                            <a href="tel:#{ControladorContratos.objeto.clientes.telefono2}">
+                                                                <h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.telefono2}"/>
+                                                            </a>
+                                                        </h3>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </li>
+                                    </ul>
                                 </td>
                             </tr>
 
@@ -90,7 +105,7 @@
                                     <h:outputText value = "MOTIVO" styleClass="label" /><br/>
                                     <p:selectOneMenu value="#{ControladorContratos.motivo}" 
                                                      style="width:90%;" 
-                                                      >
+                                                     >
                                         <f:selectItems  value="#{ControladorContratos.objeto.listaMotivos}" />
                                     </p:selectOneMenu>
                                 </td>
@@ -167,11 +182,11 @@
                             </tr>
 
                         </table>
-                        
+
                         <br/><br/><br/><br/><br/>
 
                     </div>
-                    
+
                 </h:form>
 
             </div>

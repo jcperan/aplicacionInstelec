@@ -49,29 +49,58 @@
                                     <table width="100%" bordercolor="black" border="0">
 
                                         <tr>
-                                            <td colspan="3">
-                                                <h:outputText value = "CLIENTE" styleClass="label" /><br/>
+                                            <td valign="top" colspan="3">
+                                                <ul>
+                                                    <li>
+                                                        <table>
+                                                            <tr>
+                                                                <td colspan="3">
+                                                                    <center>
+                                                                        <h1><p:outputLabel value="#{controladorAgenda.agenda.cliente.nombre}" /></h1>
+                                                                    </center>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td width="25px">
+                                                                    <h:graphicImage value="/recursos/iconos/cliente.png"/>
+                                                                </td>
+                                                                <td width="5px"></td>
+                                                                <td>
+                                                                    <h3>
+                                                                        <br/><p:outputLabel styleClass="selector" value="#{controladorAgenda.agenda.cliente.direccion}" />
+                                                                        <br/><p:outputLabel styleClass="selector" value="#{controladorAgenda.agenda.cliente.codpostal} #{controladorAgenda.agenda.cliente.poblacion}" />
+                                                                        <br/><p:outputLabel styleClass="selector" value="#{controladorAgenda.agenda.cliente.provincia}" />
+                                                                        <br/>
+                                                                        <a href="tel:#{controladorAgenda.agenda.cliente.telefono1}">
+                                                                            <p:outputLabel styleClass="selector" value="#{controladorAgenda.agenda.cliente.telefono1}"/>
+                                                                        </a>
+                                                                        <p:outputLabel value=" - "/>
+                                                                        <a href="tel:#{controladorAgenda.agenda.cliente.telefono2}">
+                                                                            <p:outputLabel styleClass="selector" value="#{controladorAgenda.agenda.cliente.telefono2}"/>
+                                                                        </a>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </li>
+                                                </ul>
                                             </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td colspan="3"><p:separator/></td>
                                         </tr>
 
                                         <tr>
-                                            <td valign="top" colspan="3">
-                                                <h1><p:outputLabel value="#{controladorAgenda.agenda.cliente.nombre}" /></h1>
-                                                <h3>
-                                                    <br/><p:outputLabel styleClass="selector" value="#{controladorAgenda.agenda.cliente.direccion}" />
-                                                    <br/><p:outputLabel styleClass="selector" value="#{controladorAgenda.agenda.cliente.codpostal} #{controladorAgenda.agenda.cliente.poblacion}" />
-                                                    <br/><p:outputLabel styleClass="selector" value="#{controladorAgenda.agenda.cliente.provincia}" />
+                                            <td colspan="3">
+                                                <h:outputText value = "Situacion (SP)" styleClass="label" />
                                                     <br/>
-                                                    <a href="tel:#{controladorAgenda.agenda.cliente.telefono1}">
-                                                        <p:outputLabel styleClass="selector" value="#{controladorAgenda.agenda.cliente.telefono1}"/>
-                                                    </a>
-                                                    <p:outputLabel value=" - "/>
-                                                    <a href="tel:#{controladorAgenda.agenda.cliente.telefono2}">
-                                                        <p:outputLabel styleClass="selector" value="#{controladorAgenda.agenda.cliente.telefono2}"/>
-                                                    </a>
-                                                </h3>
+                                                    <h:inputTextarea rows="3" style="width:100%;height:60px;"
+                                                                     disabled="#{!ControlLogin.nivelAdministrador}"
+                                                                     value="#{controladorAgenda.agenda.sp}" 
+                                                                     />
                                             </td>
-                                        </tr>
+                                        </tr>                                        
 
                                         <tr>
                                             <td colspan="3"><p:separator/></td>

@@ -53,34 +53,49 @@
 
                                         <tr>
                                             <td colspan="3">
-                                                <p:outputLabel value = "CLIENTE" styleClass="label" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3">
-                                                <h1>
-                                                    <p:outputLabel value="#{ControladorContratos.objeto.clientes.nombre}" />
-                                                </h1>
-                                                <h3>
-                                                <br/><h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.direccion}" />
-                                                <br/><h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.codpostal} #{ControladorContratos.objeto.clientes.poblacion}" />
-                                                <br/><h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.provincia}" />
-                                                <br/>
-                                                <a href="tel:#{ControladorContratos.objeto.clientes.telefono2}">
-                                                    <h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.telefono1}"/>
-                                                </a>
-                                                <p:outputLabel value=" - "/>
-                                                <a href="tel:#{ControladorContratos.objeto.clientes.telefono2}">
-                                                    <h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.telefono2}"/>
-                                                </a>
-                                                </h3>
+                                                <ul>
+                                                    <li>
+                                                        <table>
+                                                            <tr>
+                                                                <td colspan="3">
+                                                                    <h1>
+                                                                        <center>
+                                                                            <p:outputLabel value="#{ControladorContratos.objeto.clientes.nombre}" />
+                                                                        </center>
+                                                                    </h1>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td width="25px">
+                                                                    <h:graphicImage value="/recursos/iconos/cliente.png"/>
+                                                                </td>
+                                                                <td width="5px"></td>
+                                                                <td>
+                                                                    <h3>
+                                                                        <br/><h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.direccion}" />
+                                                                        <br/><h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.codpostal} #{ControladorContratos.objeto.clientes.poblacion}" />
+                                                                        <br/><h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.provincia}" />
+                                                                        <br/>
+                                                                        <a href="tel:#{ControladorContratos.objeto.clientes.telefono2}">
+                                                                            <h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.telefono1}"/>
+                                                                        </a>
+                                                                        <p:outputLabel value=" - "/>
+                                                                        <a href="tel:#{ControladorContratos.objeto.clientes.telefono2}">
+                                                                            <h:outputText styleClass="selector" value="#{ControladorContratos.objeto.clientes.telefono2}"/>
+                                                                        </a>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </li>
+                                                </ul>
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <td colspan="3"><p:separator/></td>
                                         </tr>
-                                        
+
                                         <tr>
                                             <td align="left" valign="top" width="80px">
                                                 <p:outputLabel value = "FECHA" styleClass="label" /><br/>
@@ -149,7 +164,7 @@
                                                                  value="#{ControladorContratos.descripcion}"/>
                                             </td>
                                         </tr>
-                                        
+
                                         <tr>
                                             <td colspan="3"><p:separator/></td>
                                         </tr>
@@ -196,7 +211,7 @@
                                                 <p:outputLabel id="txtLongitud" value="#{ControladorContratos.objeto.clientes.longitud}" />
                                             </td>
                                         </tr>
-                                        
+
                                         <tr>
                                             <td align="left">
                                                 <p:commandButton value="Ver" update="mapa" oncomplete="verPosicion();" />
@@ -205,7 +220,7 @@
                                                 <a href="#{ControladorContratos.objeto.clientes.getLocalizacion()}" target="_blank" style="font-size: 24px">Ir a</a>
                                             </td>
                                         </tr>
-                                        
+
 
                                         <tr height="80" valign="top">
                                             <td colspan="3">
@@ -222,7 +237,7 @@
                         </table>
 
                     </div>
-                    
+
                     <div class="footer">
                         <p:commandButton value=" Solucionar " styleClass="derecha" 
                                          icon="icono-avisos" iconPos="left"
