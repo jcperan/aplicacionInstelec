@@ -40,217 +40,226 @@
 
                     <div class="content">
 
-                        <table>
+                        <ul>
+                            <li>
+                                <table width="100%">
+
+                                    <tr>
+                                        <td colspan="3">
+                                            <p:outputLabel value = "Nombre" styleClass="label" />
+                                            <p:inputText id="txtUSER" size="120" maxlength="40" value="#{ControladorContratos.objeto.clientes.nombre}" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <p:outputLabel value = "Direccion" styleClass="label" />
+                                            <p:inputText size="120" maxlength="40" value="#{ControladorContratos.objeto.clientes.direccion}" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="90px">
+                                            <p:inputText size="5" maxlength="5" value="#{ControladorContratos.objeto.clientes.codpostal}" />
+                                        </td>
+                                        <td colspan="2">
+                                            <p:inputText size="30" maxlength="30" value="#{ControladorContratos.objeto.clientes.poblacion}" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <p:inputText size="20" maxlength="20" value="#{ControladorContratos.objeto.clientes.provincia}" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="3"><p:separator/></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <p:outputLabel value = "C.I.F." styleClass="label" />
+                                            <p:inputText size="16" maxlength="16" value="#{ControladorContratos.objeto.clientes.cif}" />
+                                        </td>
+                                        <td>
+                                            <p:outputLabel value = "Codigo" styleClass="label" />
+                                            <p:inputText size="120" maxlength="40" value="#{ControladorContratos.objeto.clientes.cuenta}" />
+                                        </td>
+                                        <td>
+                                            <p:outputLabel value = "Clave" styleClass="label" />
+                                            <p:inputText size="2" maxlength="2" value="#{ControladorContratos.objeto.clientes.claveMantenimiento}" />                                                
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="3">
+                                            <p:outputLabel value = "Telefonos" styleClass="label" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="3" >
+                                            <p:inputText size="16" maxlength="16" value="#{ControladorContratos.objeto.clientes.telefono1}" />
+                                            <p:inputText size="16" maxlength="16" value="#{ControladorContratos.objeto.clientes.telefono2}" />
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </li>
+                            <li>
+                                <table width="100%">
+                                    <tr>
+                                        <td colspan="3">
+                                            <p:outputLabel value = "Observaciones" styleClass="label" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <p:inputTextarea rows="3" style="width:100%;height:60px;"
+                                                             value="#{ControladorContratos.objeto.clientes.observaciones}" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <li>
+                                <table width="100%">
+
+                                    <tr>
+                                        <td colspan="3">
+                                            <p:outputLabel value = "Cuentas Correo " styleClass="label" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <p:inputText size="120" maxlength="99" value="#{ControladorContratos.objeto.clientes.correo1}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <p:inputText size="120" maxlength="99" value="#{ControladorContratos.objeto.clientes.correo2}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <p:inputText size="120" maxlength="99" value="#{ControladorContratos.objeto.clientes.correo3}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <p:inputText size="120" maxlength="99" value="#{ControladorContratos.objeto.clientes.correo4}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <p:inputText size="120" maxlength="99" value="#{ControladorContratos.objeto.clientes.correo5}"/>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </li>
+                            <li>
+                                <table width="100%">
+
+                                    <tr>
+                                        <td colspan="3">
+                                            <h:outputText value = "REPRESENTANTE" styleClass="label" />
+                                            <br/>
+                                            <p:selectOneMenu id="selRepresentante" value="#{ControladorContratos.objeto.clientes.representante.id}" 
+                                                             style="width:90%;" >
+                                                <f:selectItems  value="#{controladorClientes.listaRepresentantes}" />
+                                            </p:selectOneMenu>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="3">
+                                            <h:outputText value = "RUTA ASIGNADA" styleClass="label" />
+                                            <br/>
+                                            <p:selectOneMenu id="selRuta" value="#{ControladorContratos.objeto.clientes.idRuta}" 
+                                                             style="width:90%;" >
+                                                <f:selectItems  value="#{controladorClientes.listaRutas}" />
+                                            </p:selectOneMenu>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="3">
+                                            <h:outputText value = "MANTENIMIENTO" styleClass="label" />
+                                            <br/>
+                                            <p:selectOneMenu id="selMantenimiento" value="#{ControladorContratos.objeto.clientes.idMantenimiento}" 
+                                                             style="width:90%;" >
+                                                <f:selectItems  value="#{controladorClientes.listaMantenimiento}" />
+                                            </p:selectOneMenu>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </li>
+                        </ul>
+
+                        <table width="100%">
+                            <tr>
+                                <td colspan="3">
+                                    <p:fileUpload fileUploadListener="#{controladorClientes.subirFoto}" update="imagen"
+                                                  uploadLabel="Subir" accept="image/*;capture=camera" label="Hacer Foto" 
+                                                  mode="advanced" multiple="false" fileLimit="1" auto="false" skinSimple="true" />
+                                </td>
+                            </tr>
 
                             <tr>
+                                <td colspan="3" align="center">
+                                    <p:graphicImage id="imagen" value="#{ControladorContratos.objeto.clientes.imagen}" cache="false"
+                                                    style="width:100%;min-height: 30px;border:solid black"/>
+                                </td>
+                            </tr>
 
-                                <td colspan="2" valign="top">
+                            <tr>
+                                <td colspan="3"><p:separator/></td>
+                            </tr>
 
-                                    <table width="100%">
+                            <tr>
+                                <td colspan="3">
+                                    <p:gmap id="mapa" center="#{ControladorContratos.objeto.clientes.latitud},#{ControladorContratos.objeto.clientes.longitud}" 
+                                            navigationControl="true" widgetVar="map" streetView="false" 
+                                            zoom="18" type="HYBRID" style="width:100%;height:400px;" />
+                                </td>
+                            </tr>
 
-                                        <tr>
-                                            <td colspan="3">
-                                                <p:outputLabel value = "Nombre" styleClass="label" />
-                                                <p:inputText id="txtUSER" size="120" maxlength="40" value="#{ControladorContratos.objeto.clientes.nombre}" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3">
-                                                <p:outputLabel value = "Direccion" styleClass="label" />
-                                                <p:inputText size="120" maxlength="40" value="#{ControladorContratos.objeto.clientes.direccion}" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td width="90px">
-                                                <p:inputText size="5" maxlength="5" value="#{ControladorContratos.objeto.clientes.codpostal}" />
-                                            </td>
-                                            <td colspan="2">
-                                                <p:inputText size="30" maxlength="30" value="#{ControladorContratos.objeto.clientes.poblacion}" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3">
-                                                <p:inputText size="20" maxlength="20" value="#{ControladorContratos.objeto.clientes.provincia}" />
-                                            </td>
-                                        </tr>
+                            <tr>
+                                <td>
+                                    <p:inputText id="txtLatitud" size="10" value="#{ControladorContratos.objeto.clientes.latitud}" style="width:120px;" />
+                                </td>
+                                <td align="center">
+                                    <p:commandButton value="Ver" update="mapa" oncomplete="marcaPosicion();" icon="icono-localizar" iconPos="right" />
+                                </td>
+                                <td>
+                                    <p:inputText id="txtLongitud" size="10" value="#{ControladorContratos.objeto.clientes.longitud}" style="width:120px;float:right;" />
+                                </td>
+                            </tr>
 
-                                        <tr>
-                                            <td colspan="3"><p:separator/></td>
-                                        </tr>
+                            <tr>
+                                <td>
+                                    <p:commandButton id="cmdLocalizar" value="Localizar"  onclick="localizarActual();" style="width:120px;" />
+                                </td>
+                                <td align="center">
+                                    <a href="#{ControladorContratos.objeto.clientes.getLocalizacion()}" target="_blank" style="font-size: 24px">Ir a</a>
+                                </td>
+                                <td>
+                                    <p:commandButton id="cmdActualizar" value="Actualizar" update="formulario" actionListener="#{ControladorContratos.cmdGrabaCliente}" style="width:120px;float:right;" />
+                                </td>
+                            </tr>
 
-                                        <tr>
-                                            <td>
-                                                <p:outputLabel value = "C.I.F." styleClass="label" />
-                                                <p:inputText size="16" maxlength="16" value="#{ControladorContratos.objeto.clientes.cif}" />
-                                            </td>
-                                            <td>
-                                                <p:outputLabel value = "Codigo" styleClass="label" />
-                                                <p:inputText size="120" maxlength="40" value="#{ControladorContratos.objeto.clientes.cuenta}" />
-                                            </td>
-                                            <td>
-                                                <p:outputLabel value = "Clave" styleClass="label" />
-                                                <p:inputText size="2" maxlength="2" value="#{ControladorContratos.objeto.clientes.claveMantenimiento}" />                                                
-                                            </td>
-                                        </tr>
+                            <tr height="80" valign="top">
+                                <td colspan="3">
+                                    <p:messages style="color:Red;">
 
-                                        <tr>
-                                            <td colspan="3">
-                                                <p:outputLabel value = "Telefonos" styleClass="label" />
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="3" >
-                                                <p:inputText size="16" maxlength="16" value="#{ControladorContratos.objeto.clientes.telefono1}" />
-                                                <p:inputText size="16" maxlength="16" value="#{ControladorContratos.objeto.clientes.telefono2}" />
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="3"><p:separator/></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="3">
-                                                <p:outputLabel value = "Cuentas Correo " styleClass="label" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3">
-                                                <p:inputText size="120" maxlength="99" value="#{ControladorContratos.objeto.clientes.correo1}"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3">
-                                                <p:inputText size="120" maxlength="99" value="#{ControladorContratos.objeto.clientes.correo2}"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3">
-                                                <p:inputText size="120" maxlength="99" value="#{ControladorContratos.objeto.clientes.correo3}"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3">
-                                                <p:inputText size="120" maxlength="99" value="#{ControladorContratos.objeto.clientes.correo4}"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3">
-                                                <p:inputText size="120" maxlength="99" value="#{ControladorContratos.objeto.clientes.correo5}"/>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="3"><p:separator/></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="3">
-                                                <h:outputText value = "REPRESENTANTE" styleClass="label" />
-                                                <br/>
-                                                <p:selectOneMenu id="selRepresentante" value="#{ControladorContratos.objeto.clientes.representante.id}" 
-                                                                 style="width:90%;" >
-                                                    <f:selectItems  value="#{controladorClientes.listaRepresentantes}" />
-                                                </p:selectOneMenu>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="3">
-                                                <h:outputText value = "RUTA ASIGNADA" styleClass="label" />
-                                                <br/>
-                                                <p:selectOneMenu id="selRuta" value="#{ControladorContratos.objeto.clientes.idRuta}" 
-                                                                 style="width:90%;" >
-                                                    <f:selectItems  value="#{controladorClientes.listaRutas}" />
-                                                </p:selectOneMenu>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="3">
-                                                <h:outputText value = "MANTENIMIENTO" styleClass="label" />
-                                                <br/>
-                                                <p:selectOneMenu id="selMantenimiento" value="#{ControladorContratos.objeto.clientes.idMantenimiento}" 
-                                                                 style="width:90%;" >
-                                                    <f:selectItems  value="#{controladorClientes.listaMantenimiento}" />
-                                                </p:selectOneMenu>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="3"><p:separator/></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3">
-                                                <p:fileUpload fileUploadListener="#{controladorClientes.subirFoto}" update="imagen"
-                                                              uploadLabel="Subir" accept="image/*;capture=camera" label="Hacer Foto" 
-                                                              mode="advanced" multiple="false" fileLimit="1" auto="false" skinSimple="true" />
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="3" align="center">
-                                                <p:graphicImage id="imagen" value="#{ControladorContratos.objeto.clientes.imagen}" cache="false"
-                                                                style="width:100%;min-height: 30px;border:solid black"/>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="3"><p:separator/></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="3">
-                                                <p:gmap id="mapa" center="#{ControladorContratos.objeto.clientes.latitud},#{ControladorContratos.objeto.clientes.longitud}" 
-                                                        navigationControl="true" widgetVar="map" streetView="false" 
-                                                        zoom="18" type="HYBRID" style="width:100%;height:400px;" />
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <p:inputText id="txtLatitud" size="10" value="#{ControladorContratos.objeto.clientes.latitud}" style="width:120px;" />
-                                            </td>
-                                            <td align="center">
-                                                <p:commandButton value="Ver" update="mapa" oncomplete="marcaPosicion();" icon="icono-localizar" iconPos="right" />
-                                            </td>
-                                            <td>
-                                                <p:inputText id="txtLongitud" size="10" value="#{ControladorContratos.objeto.clientes.longitud}" style="width:120px;float:right;" />
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <p:commandButton id="cmdLocalizar" value="Localizar"  onclick="localizarActual();" style="width:120px;" />
-                                            </td>
-                                            <td align="center">
-                                                <a href="#{ControladorContratos.objeto.clientes.getLocalizacion()}" target="_blank" style="font-size: 24px">Ir a</a>
-                                            </td>
-                                            <td>
-                                                <p:commandButton id="cmdActualizar" value="Actualizar" update="formulario" actionListener="#{ControladorContratos.cmdGrabaCliente}" style="width:120px;float:right;" />
-                                            </td>
-                                        </tr>
-
-                                        <tr height="80" valign="top">
-                                            <td colspan="3">
-                                                <p:messages style="color:Red;">
-
-                                                </p:messages>
-
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <br/><br/><br/><br/><br/>
-                                            </td>
-                                        </tr>
-
-                                    </table>
+                                    </p:messages>
 
                                 </td>
+                            </tr>
 
+                            <tr>
+                                <td>
+                                    <br/><br/><br/><br/><br/>
+                                </td>
                             </tr>
 
                         </table>

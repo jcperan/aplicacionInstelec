@@ -49,6 +49,7 @@ public class Clientes implements Serializable {
 
     private byte[] foto;
     private String claveMantenimiento;
+    private String observaciones;
 
     @Transient
     private StreamedContent imagen;
@@ -289,6 +290,14 @@ public class Clientes implements Serializable {
 
     public void setClaveMantenimiento(String claveMantenimiento) {
         this.claveMantenimiento = claveMantenimiento;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 
 }

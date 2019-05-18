@@ -68,6 +68,7 @@ public class EnviarCorreo {
             BodyPart texto = new MimeBodyPart();
             String TextoMensaje = (new Date()).toString() + "<br/><br/>"
                     + "                    <strong>" + objeto.getVisitas().getClientes().getNombre() + "</strong><br/><br/>"
+                    + objeto.getVisitas().getSp() + "<br/>"
                     + "En el dia de hoy hemos realizado una visita a su instalacion por <br/>"
                     + objeto.getVisitas().getMotivos().getMotivo() + "<br/>"
                     + "con el siguiente trabajo "
@@ -92,8 +93,8 @@ public class EnviarCorreo {
             imagen.setHeader("Content-ID", "<image>");
 
             String flname = "justificante";
-            String spname = objeto.getVisitas().getSp().trim();
-            if (!"".equals(spname)) {
+            String spname = ""; if (!objeto.getVisitas().getSp().equals(null))  spname = objeto.getVisitas().getSp().trim();
+            if (spname != "") {
                 Path file1 = FileSystems.getDefault().getPath(realPath + "/informes/" + flname + ".pdf");
                 Path file2 = FileSystems.getDefault().getPath(realPath + "/informes/" + spname + ".pdf");
                 Files.copy(file1, file2, StandardCopyOption.REPLACE_EXISTING);
@@ -102,9 +103,9 @@ public class EnviarCorreo {
 
             
             // Se compone el adjunto con el justificante
-            BodyPart adjunto = new MimeBodyPart();
-            adjunto.setDataHandler(new DataHandler(new FileDataSource(realPath + "/informes/" + flname + ".pdf")));
-            adjunto.setFileName(flname);
+            BodyPart adjunto1 = new MimeBodyPart();
+            adjunto1.setDataHandler(new DataHandler(new FileDataSource(realPath + "/informes/" + flname + ".pdf")));
+            adjunto1.setFileName(flname + ".pdf");
 
             // Se compone el adjunto con el mantenimiento
             BodyPart adjunto2 = new MimeBodyPart();
@@ -117,10 +118,8 @@ public class EnviarCorreo {
             MimeMultipart multiParte = new MimeMultipart();
             multiParte.addBodyPart(texto);
             multiParte.addBodyPart(imagen);
-            multiParte.addBodyPart(adjunto);
-            if (swMantenimiento) {
-                multiParte.addBodyPart(adjunto2);
-            }
+            multiParte.addBodyPart(adjunto1);
+            if (swMantenimiento) multiParte.addBodyPart(adjunto2);
 
             // Construimos el mensaje
             MimeMessage message = new MimeMessage(session);

@@ -89,8 +89,8 @@ public class ControladorContratos implements Serializable {
     private Integer cliente;
     private Integer motivo;
     private Integer trabajo;
-    private String descripcion;
-    private String sp;
+    private String descripcion = "";
+    private String sp = "";
     
     private String descripcionOperario;
     private String descripcionAviso;

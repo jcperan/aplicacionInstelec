@@ -258,7 +258,7 @@ public class ControladorAgenda implements Serializable {
         this.controladorContratos.setDescripcion(this.agenda.getDescripcion());
         this.controladorContratos.setSp(this.agenda.getSp());
         this.controladorContratos.setMotivo(1);
-        this.controladorContratos.setTrabajo(2);
+        this.controladorContratos.setTrabajo(1);
         this.controladorContratos.setMantenimiento(true);
         this.controladorContratos.setCargo(false);
 
