@@ -93,8 +93,10 @@ public class EnviarCorreo {
             imagen.setHeader("Content-ID", "<image>");
 
             String flname = "justificante";
-            String spname = ""; if (!objeto.getVisitas().getSp().equals(null))  spname = objeto.getVisitas().getSp().trim();
-            if (spname != "") {
+            String spname = ""; if (objeto.getVisitas().getSp() != null)  spname = objeto.getVisitas().getSp().trim();
+            if (spname.equals("")) {
+                
+            } else {
                 Path file1 = FileSystems.getDefault().getPath(realPath + "/informes/" + flname + ".pdf");
                 Path file2 = FileSystems.getDefault().getPath(realPath + "/informes/" + spname + ".pdf");
                 Files.copy(file1, file2, StandardCopyOption.REPLACE_EXISTING);
@@ -125,10 +127,10 @@ public class EnviarCorreo {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(destino));
-            if (spname != "") {
-                message.setSubject(spname);
-            } else {
+            if (spname.equals("")) {
                 message.setSubject("Justificante " + objeto.getClientes().getNombre());
+            } else {
+                message.setSubject(spname);
             }
             message.setContent(multiParte);
 
