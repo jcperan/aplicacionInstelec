@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="justificante" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="224"/>
+	<property name="ireport.y" value="680"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -109,7 +109,7 @@ where visitas.id = $P{justificante}]]>
 		<band height="8" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="653" splitType="Stretch">
+		<band height="658" splitType="Stretch">
 			<staticText>
 				<reportElement x="171" y="7" width="90" height="18"/>
 				<textElement>
@@ -264,7 +264,7 @@ where visitas.id = $P{justificante}]]>
 				<text><![CDATA[En breve recibirá valoración económica de los servicios prestados]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="632" width="555" height="20"/>
+				<reportElement x="0" y="632" width="555" height="26"/>
 				<textElement textAlignment="Center">
 					<font fontName="Serif" size="9" isBold="true" isUnderline="false"/>
 				</textElement>
@@ -278,7 +278,7 @@ El  registro de  mantenimiento  es obligatorio según establece  el Código Téc
 			<staticText>
 				<reportElement mode="Transparent" x="0" y="604" width="555" height="28" forecolor="#FF3333"/>
 				<textElement textAlignment="Center">
-					<font size="10" isBold="true" isUnderline="false"/>
+					<font size="9" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Si desea estar presente en la próxima revisión/reparación de su puerta automática, por favor, envienos todos los datos a instelec@puertaautomatica.es para concertar la visita con la persona indicada.]]></text>
 			</staticText>
@@ -383,7 +383,7 @@ El  registro de  mantenimiento  es obligatorio según establece  el Código Téc
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="19" splitType="Stretch">
+		<band height="8" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
 				<graphicElement>
