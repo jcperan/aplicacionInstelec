@@ -23,6 +23,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.text.SimpleDateFormat;
 
 public class EnviarCorreo {
 
@@ -69,7 +70,7 @@ public class EnviarCorreo {
             String TextoMensaje = (new Date()).toString() + "<br/><br/>"
                     + "                    <strong>" + objeto.getVisitas().getClientes().getNombre() + "</strong><br/><br/>"
                     + objeto.getVisitas().getSp() + "<br/>"
-                    + "En el dia de hoy hemos realizado una visita a su instalacion por <br/>"
+                    + "En el dia " + new SimpleDateFormat("dd-MM-yyyy").format(objeto.getVisitas().getFecha()) + " hemos realizado una visita a su instalacion por <br/>"
                     + objeto.getVisitas().getMotivos().getMotivo() + "<br/>"
                     + "con el siguiente trabajo "
                     + objeto.getVisitas().getTrabajos().getTrabajo() + "<br/><br/>"
