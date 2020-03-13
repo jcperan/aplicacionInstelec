@@ -233,7 +233,7 @@ public class Clientes implements Serializable {
     public void setIdMantenimiento(int idMantenimiento) {
         this.idMantenimiento = idMantenimiento;
     }
-    
+
     public Double getLongitud() {
         return longitud;
     }

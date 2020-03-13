@@ -19,6 +19,7 @@ public class Usuarios implements Serializable {
     private String clave;
     private int nivel;
     private String proceso;
+    private int idRepresentante;
 
     public Usuarios() {
     }
@@ -61,6 +62,14 @@ public class Usuarios implements Serializable {
 
     public String getProceso() {
         return proceso;
+    }
+
+    public int getIdRpresentante() {
+        return idRepresentante;
+    }
+
+    public void setIdRpresentante(int idRpresentante) {
+        this.idRepresentante = idRpresentante;
     }
 
 }

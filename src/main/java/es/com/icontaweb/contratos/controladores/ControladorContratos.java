@@ -331,7 +331,17 @@ public class ControladorContratos implements Serializable {
             objeto.LeerAviso(idAviso);
             objeto.getAvisos().setEstado("1");
             objeto.ActualizarAviso(idAviso);
-        }        
+        }
+        
+        descripcion = "";
+        sp = "";
+    
+        descripcionOperario = "";
+        descripcionAviso = "";
+
+        firma = "";
+        firmado1 = "";
+        firmado2 = "";
         
         return "/contratos/opciones.xhtml";
     }
@@ -346,7 +356,8 @@ public class ControladorContratos implements Serializable {
         }
 
         GenerarImagen generador = new GenerarImagen();
-        byte[] imagen = generador.ImagenJson(firma);
+        // byte[] imagen = generador.ImagenJson(firma);
+        byte[] imagen = generador.ImagenJson(objeto.getVisitas().getFirma());
 
         GenerarJustificante informe = new GenerarJustificante();
         informe.GeneraInforme(objeto.getVisitas().getId(), imagen);

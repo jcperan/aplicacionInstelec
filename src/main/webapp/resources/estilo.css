@@ -1,0 +1,62 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29-feb-2020, 23:42:38
+    Author     : jcperan
+*/
+
+.ui-widget-content {
+
+}
+
+
+.header {
+    background-color: #686868;
+}
+
+.headerTabla {
+    background-color: #686868;
+}
+
+.footer {
+    background-color: #686868;
+}
+
+.footerTabla {
+    background-color: #686868;
+}
+
+.footerTexto {
+    background-color: #686868;
+    font-family: fantasy;
+    font-size: 12px;
+    color: white;
+}
+
+.texto {
+    font-size: 10px;
+}
+
+.titulo {
+    font-size: 12px;
+}
+
+ul {
+    padding: 1px;
+    list-style: none;
+}
+
+li {
+
+    background: -webkit-linear-gradient(top, #fcfff4 0%,#dfe5d7 40%,#b3bead 100%);
+
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    margin: 10px;
+    display: block;
+}
+
