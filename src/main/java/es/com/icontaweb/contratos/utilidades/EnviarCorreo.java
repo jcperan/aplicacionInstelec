@@ -62,7 +62,8 @@ public class EnviarCorreo {
             // Preparamos la sesion
             Session session = Session.getDefaultInstance(props);
 
-            String aviso = objeto.getAvisos().getObservaciones();
+            // String aviso = objeto.getAvisos().getObservaciones();
+            String aviso = objeto.getVisitas().getDescripcionAviso();
             if (aviso == null) aviso = "";
 
             // Se compone la parte del texto

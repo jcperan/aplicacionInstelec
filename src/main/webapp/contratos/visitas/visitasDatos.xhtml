@@ -146,6 +146,27 @@
                             <tr>
                                 <td colspan="2"><p:separator/></td>
                             </tr>
+                            
+                            <tr>
+                                <td colspan="2">
+                                    <p:panel rendered="#{ControlLogin.nivelAdministrador}">
+                                        <p:selectOneMenu id="liena1" value="#{ControladorContratos.linea1}" style="width:90%">
+                                                    <f:selectItem itemLabel="" itemValue="" />
+                                                    <f:selectItem itemLabel="Su puerta automatica no cumple normativa de seguridad" itemValue="Su puerta automatica no cumple normativa de seguridad" />
+                                        </p:selectOneMenu>
+                                        <br/><br/><br/>
+                                        <p:selectOneMenu id="linea2" value="#{ControladorContratos.linea2}" style="width:90%">
+                                                    <f:selectItem itemLabel="" itemValue="" />
+                                                    <f:selectItem itemLabel="Carece de registro de mantenimiento segun UNE-EN. 12635:2002+A1:2009" itemValue="Carece de registro de mantenimiento segun UNE-EN. 12635:2002+A1:2009" />
+                                                    <f:selectItem itemLabel="Carece de registro de mantenimiento segun UNE 85121:2018" itemValue="Carece de registro de mantenimiento segun UNE 85121:2018" />
+                                        </p:selectOneMenu>
+                                    </p:panel>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2"><p:separator/></td>
+                            </tr>
 
                             <tr>
                                 <td colspan="2">

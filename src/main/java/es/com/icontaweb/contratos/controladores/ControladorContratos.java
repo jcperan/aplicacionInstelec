@@ -97,6 +97,9 @@ public class ControladorContratos implements Serializable {
 
     private boolean mantenimiento;
     private boolean cargo = true;
+    
+    private String linea1 = "";
+    private String linea2 = "";
 
     private String firma;
     private String firmado1;
@@ -177,6 +180,22 @@ public class ControladorContratos implements Serializable {
         this.cargo = cargo;
     }
 
+    public String getLinea1() {
+        return linea1;
+    }
+
+    public void setLinea1(String linea1) {
+        this.linea1 = linea1;
+    }
+
+    public String getLinea2() {
+        return linea2;
+    }
+
+    public void setLinea2(String linea2) {
+        this.linea2 = linea2;
+    }
+    
     public String getFirma() {
         return firma;
     }
@@ -325,6 +344,8 @@ public class ControladorContratos implements Serializable {
         objeto.getVisitas().setDescripcionAviso(descripcionAviso);
         objeto.getVisitas().setDescripcionOperario(descripcionOperario);
         objeto.getVisitas().setSp(sp);
+        objeto.getVisitas().setLinea1(linea1);
+        objeto.getVisitas().setLinea2(linea2);
         objeto.GrabaVisita();
         
         if (idAviso != 0) {
@@ -335,6 +356,9 @@ public class ControladorContratos implements Serializable {
         
         descripcion = "";
         sp = "";
+        
+        linea1 = "";
+        linea2 = "";
     
         descripcionOperario = "";
         descripcionAviso = "";
@@ -391,6 +415,10 @@ public class ControladorContratos implements Serializable {
         firmado1 = "";
         firmado2 = "";
         idAviso = 0;
+        
+        sp = "";
+        linea1 = "";
+        linea2 = "";
 
         return "/contratos/opciones.xhtml";
     }

@@ -199,6 +199,27 @@
 
                             <tr>
                                 <td colspan="2">
+                                    <p:panel rendered="#{ControlLogin.nivelAdministrador}">
+                                        <p:selectOneMenu id="liena1" value="#{controladorVisitas.visita.linea1}" style="width:90%">
+                                                    <f:selectItem itemLabel="" itemValue="" />
+                                                    <f:selectItem itemLabel="Su puerta automatica no cumple normativa de seguridad" itemValue="Su puerta automatica no cumple normativa de seguridad" />
+                                        </p:selectOneMenu>
+                                        <br/><br/><br/>
+                                        <p:selectOneMenu id="linea2" value="#{controladorVisitas.visita.linea2}" style="width:90%">
+                                                    <f:selectItem itemLabel="" itemValue="" />
+                                                    <f:selectItem itemLabel="Carece de registro de mantenimiento segun UNE-EN. 12635:2002+A1:2009" itemValue="Carece de registro de mantenimiento segun UNE-EN. 12635:2002+A1:2009" />
+                                                    <f:selectItem itemLabel="Carece de registro de mantenimiento segun UNE 85121:2018" itemValue="Carece de registro de mantenimiento segun UNE 85121:2018" />
+                                        </p:selectOneMenu>
+                                    </p:panel>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2"><p:separator/></td>
+                            </tr>
+                                                        
+                            <tr>
+                                <td colspan="2">
                                     <p:outputLabel value = "DESCRIPCION DEL AVISO" styleClass="label" /><br/>
                                     <h:inputTextarea rows="6" style="width: 100%; height:220px !important;" 
                                                      rendered="#{ControlLogin.nivelAdministrador}" 
