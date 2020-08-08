@@ -20,10 +20,6 @@ public class Representante implements Serializable {
 
 	private String nombre;
 
-	//bi-directional many-to-one association to Clientes
-	@OneToMany(mappedBy="representante")
-	private Set<Clientes> clientes;
-
     public Representante() {
     }
 
@@ -43,12 +39,4 @@ public class Representante implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public Set<Clientes> getClientes() {
-		return this.clientes;
-	}
-
-	public void setClientes(Set<Clientes> clientes) {
-		this.clientes = clientes;
-	}
-	
 }

@@ -53,6 +53,8 @@ public class Visitas implements Serializable {
     
     private String linea1;
     private String linea2;
+    
+    private boolean visible;
 
     //bi-directional many-to-one association to Clientes
     @ManyToOne
@@ -230,6 +232,14 @@ public class Visitas implements Serializable {
 
     public void setLinea2(String linea2) {
         this.linea2 = linea2;
+    }
+
+    public boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
 }

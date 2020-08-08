@@ -83,7 +83,7 @@
                         <table width="100%">
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <ul>
                                         <li>
                                             <table>
@@ -124,11 +124,11 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2"><p:separator/></td>
+                                <td colspan="3"><p:separator/></td>
                             </tr>
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <h:outputText value = "Situacion (SP)" styleClass="label" />
                                     <br/>
                                     <h:inputTextarea rows="3" style="width:100%;height:60px;"
@@ -139,7 +139,7 @@
                             </tr>                                        
 
                             <tr>
-                                <td colspan="2"><p:separator/></td>
+                                <td colspan="3"><p:separator/></td>
                             </tr>
 
                             <tr>
@@ -147,14 +147,14 @@
                                     <p:outputLabel value = "FECHA" class="label" /><br/>
                                     <p:calendar value="#{controladorVisitas.visita.fecha}" pattern="dd-MM-yyyy" />
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <p:outputLabel value = "HORA" class="label" /><br/>
                                     <p:inputText class="input" size="8" value="#{controladorVisitas.visita.hora}" />
                                 </td>
                             </tr>
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <h:outputText value = "MOTIVO" styleClass="label" /><br/>
                                     <p:selectOneMenu id="selRuta" value="#{controladorVisitas.visita.motivos.id}" 
                                                      style="width:90%;"
@@ -165,7 +165,7 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <p:outputLabel value = "TRABAJO REALIZADO" styleClass="label" /><br/>
                                     <p:selectOneMenu id="selTrabajo" value="#{controladorVisitas.visita.trabajos.id}" 
                                                      style="width:90%;"
@@ -176,7 +176,7 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2"><p:separator/></td>
+                                <td colspan="3"><p:separator/></td>
                             </tr>
 
                             <tr>
@@ -190,15 +190,19 @@
                                     <p:inputSwitch id="checkConCargo" value="#{controladorVisitas.visita.conCargo}" 
                                                    style="width:30px;" onLabel="si" offLabel="no" />
                                 </td>
-
+                                <td>
+                                    <p:outputLabel value="Visible" for="checkVisible" /><br/>
+                                    <p:inputSwitch id="checkVisible" value="#{controladorVisitas.visita.visible}" 
+                                                   style="width:30px;" onLabel="si" offLabel="no" />
+                                </td>
                             </tr>
 
                             <tr>
-                                <td colspan="2"><p:separator/></td>
+                                <td colspan="3"><p:separator/></td>
                             </tr>
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <p:panel rendered="#{ControlLogin.nivelAdministrador}">
                                         <p:selectOneMenu id="liena1" value="#{controladorVisitas.visita.linea1}" style="width:90%">
                                                     <f:selectItem itemLabel="" itemValue="" />
@@ -215,11 +219,11 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2"><p:separator/></td>
+                                <td colspan="3"><p:separator/></td>
                             </tr>
                                                         
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <p:outputLabel value = "DESCRIPCION DEL AVISO" styleClass="label" /><br/>
                                     <h:inputTextarea rows="6" style="width: 100%; height:220px !important;" 
                                                      rendered="#{ControlLogin.nivelAdministrador}" 
@@ -228,7 +232,7 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <p:outputLabel value = "TRABAJO REALIZADO - DESCRIPCION OPERARIO" styleClass="label" /><br/>
                                     <h:inputTextarea rows="6" style="width: 100%; height:220px !important;" 
                                                      rendered="#{ControlLogin.nivelAdministrador}" 
@@ -237,7 +241,7 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <p:outputLabel value = "TRABAJO REALIZADO - DESCRIPCION CLIENTE" styleClass="label" /><br/>
                                     <h:inputTextarea rows="6" style="width: 100%; height:220px !important;" 
                                                      rendered="#{ControlLogin.nivelAdministrador}" 
@@ -246,21 +250,21 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2"><p:separator/></td>
+                                <td colspan="3"><p:separator/></td>
                             </tr>
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <p:outputLabel value="Su firma no implica conformidad con el trabajo realizado, solo reconoce la presencia del tecnico." style="font-weight:bold;"/>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td colspan="2"><p:separator/></td>
+                                <td colspan="3"><p:separator/></td>
                             </tr>
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <p:inputText class="input" size="40" maxlength="40" value="#{controladorVisitas.visita.firmado1}" />
                                     <br/>
                                     <p:inputText class="input" size="40" maxlength="40" value="#{controladorVisitas.visita.firmado2}" />
@@ -269,11 +273,11 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2"><p:separator/></td>
+                                <td colspan="3"><p:separator/></td>
                             </tr>
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <center>
                                         <p:signature guideline="true" style="width:300px;height:200px" widgetVar="sig" 
                                                      value="#{controladorVisitas.visita.firma}" class="derecha" >
@@ -284,14 +288,14 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <p:commandButton value="Borrar Firma" icon="ui-icon-close" type="button" onclick="PF('sig').clear()"/>
                                     <br/><br/><br/>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td colspan="2"><p:separator/></td>
+                                <td colspan="3"><p:separator/></td>
                             </tr>
 
                             <tr>				
@@ -299,7 +303,7 @@
                                     <p:inputSwitch value="#{ControladorContratos.enviar1}" 
                                                    style="width:30px;" onLabel="si" offLabel="no" />
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <p:inputText maxlength="40" value="#{controladorVisitas.visita.clientes.correo1}" />
                                 </td>
                             </tr>
@@ -309,7 +313,7 @@
                                     <p:inputSwitch value="#{ControladorContratos.enviar2}" 
                                                    style="width:30px;" onLabel="si" offLabel="no" />
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <p:inputText maxlength="40" value="#{controladorVisitas.visita.clientes.correo2}" />
                                 </td>
                             </tr>
@@ -319,7 +323,7 @@
                                     <p:inputSwitch value="#{ControladorContratos.enviar3}" 
                                                    style="width:30px;" onLabel="si" offLabel="no" />
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <p:inputText maxlength="40" value="#{controladorVisitas.visita.clientes.correo3}" />
                                 </td>
                             </tr>
@@ -329,7 +333,7 @@
                                     <p:inputSwitch value="#{ControladorContratos.enviar4}" 
                                                    style="width:30px;" onLabel="si" offLabel="no" />
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <p:inputText maxlength="40" value="#{controladorVisitas.visita.clientes.correo4}" />
                                 </td>
                             </tr>
@@ -339,14 +343,14 @@
                                     <p:inputSwitch value="#{ControladorContratos.enviar5}" 
                                                    style="width:30px;" onLabel="si" offLabel="no" />
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <p:inputText maxlength="40" value="#{controladorVisitas.visita.clientes.correo5}" />
                                 </td>
                             </tr>
 
 
                             <tr>
-                                <td colspan="2" height="80" valign="top">
+                                <td colspan="3" height="80" valign="top">
                                     <p:messages />
                                 </td>
                             </tr>

@@ -38,6 +38,7 @@ public class Clientes implements Serializable {
     private String telefono1;
     private String telefono2;
     
+    private int idRepresentante;
     private int idRuta;
     private int idMantenimiento;
     
@@ -50,6 +51,8 @@ public class Clientes implements Serializable {
     private byte[] foto;
     private String claveMantenimiento;
     private String observaciones;
+    
+    private boolean visible;
 
     @Transient
     private StreamedContent imagen;
@@ -65,11 +68,6 @@ public class Clientes implements Serializable {
     //bi-directional many-to-one association to Visitas
     @OneToMany(mappedBy = "cliente")
     private Set<Agenda> agenda;
-
-    //bi-directional many-to-one association to Representante
-    @ManyToOne
-    @JoinColumn(name = "idRepresentante")
-    private Representante representante;
 
     public Clientes() {
     }
@@ -210,14 +208,14 @@ public class Clientes implements Serializable {
         this.visitas = visitas;
     }
 
-    public Representante getRepresentante() {
-        return this.representante;
+    public int getIdRepresentante() {
+        return idRepresentante;
     }
 
-    public void setRepresentante(Representante representante) {
-        this.representante = representante;
+    public void setIdRepresentante(int idRepresentante) {
+        this.idRepresentante = idRepresentante;
     }
-
+    
     public int getIdRuta() {
         return idRuta;
     }
@@ -298,6 +296,14 @@ public class Clientes implements Serializable {
 
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
+    }
+
+    public boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
 }

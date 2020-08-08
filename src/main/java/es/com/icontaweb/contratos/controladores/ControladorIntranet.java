@@ -12,6 +12,7 @@ package es.com.icontaweb.contratos.controladores;
 
 import es.com.icontaweb.contratos.modelos.Clientes;
 import es.com.icontaweb.contratos.modelos.Representante;
+import es.com.icontaweb.contratos.modelos.Visitas;
 import es.com.icontaweb.controladores.ControlLogin;
 import java.io.File;
 import java.io.IOException;
@@ -63,8 +64,19 @@ public class ControladorIntranet implements Serializable {
     @ManagedProperty(value = "#{ControlLogin}")
     private ControlLogin controlLogin = new ControlLogin();
     public void setControlLogin(ControlLogin controlLogin) { this.controlLogin = controlLogin; }
-    public ControlLogin getControlLogin() { return controlLogin; }    
+    public ControlLogin getControlLogin() { return controlLogin; }
     
+    @ManagedProperty(value = "#{ControladorContratos}")
+    private ControladorContratos controladorContratos = new ControladorContratos();
+    
+    public void setControladorContratos(ControladorContratos controladorContratos) {
+        this.controladorContratos = controladorContratos;
+    }
+    
+    public ControladorContratos getControladorContratos() {
+        return controladorContratos;
+    }
+        
     private List<Clientes> listaClientes = new ArrayList<Clientes>();
 
     public List<Clientes> getListaClientes() {
@@ -74,13 +86,14 @@ public class ControladorIntranet implements Serializable {
             listaClientes.clear();
             
             int idRepresentante = getControlLogin().getLogin().getUsuarios().getIdRpresentante();
-            String sqlquery  = "select c from Clientes c where c.representante.id = :representante ";
+            String sqlquery  = "select c from Clientes c where c.idRepresentante = :representante ";
+                   sqlquery += "and c.visible = 1 ";
                    sqlquery += "order by c.nombre";
             Query q = em.createQuery(sqlquery);
             q.setParameter("representante", idRepresentante);
             listaClientes = q.getResultList();
         } catch (Exception e) {
-            System.out.println("icontaweb " + (new Date()).toString() + " " + e.getMessage());
+            System.out.println("INTRANET " + (new Date()).toString() + " " + e.getMessage());
         } finally {
             if (em.isOpen()) em.close();
         }
@@ -99,6 +112,7 @@ public class ControladorIntranet implements Serializable {
         em = entityManager();
         try {
             this.cliente = em.find(Clientes.class, id);
+            this.controladorContratos.getObjeto().LeerCliente(id);            
         } catch (Exception e) {
             System.out.println("INTRANET " + (new Date()).toString() + " " + e.getMessage());
         }
@@ -147,5 +161,36 @@ public class ControladorIntranet implements Serializable {
     }
     public void setCliente(Clientes cliente) { this.cliente = cliente; }
     
+
+    private List<Visitas> listaTrabajos = new ArrayList<Visitas>();
+
+    public List<Visitas> getListaTrabajos() {
+
+        em = entityManager();   
+        try {
+            listaTrabajos.clear();
+            
+            String sqlquery  = "select v from Visitas v where v.clientes.id = :cliente ";
+                   sqlquery += "and v.visible = 1 ";
+                   sqlquery += "order by v.fecha desc";
+            Query q = em.createQuery(sqlquery);
+            q.setParameter("cliente", this.cliente.getId());
+            listaTrabajos = q.getResultList();
+        } catch (Exception e) {
+            System.out.println("INTRANET " + (new Date()).toString() + " " + e.getMessage());
+        } finally {
+            if (em.isOpen()) em.close();
+        }
+        
+        return listaTrabajos;
+    }
+
+    public void setListaTrabajos(List<Visitas> listaTrabajos) {
+        this.listaTrabajos = listaTrabajos;
+    }
+
+    public void botonTrabajo(ActionEvent event) {
+
+    }
     
 }

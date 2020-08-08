@@ -310,13 +310,12 @@ public class ControladorContratos implements Serializable {
      * @param event
      */
     public void cmdGrabaCliente(ActionEvent event) {
-        objeto.LeerRepresentante(this.representante);
-        objeto.getClientes().setRepresentante(objeto.getRepresentante());
         if (swMODIFICAR) {
             objeto.ActualizaCliente(cliente);
         } else {
             objeto.GrabaCliente();
         }
+        Rutinas.MuestraMensaje("Los datos han sido grabados.");
     }
 
     public String GRABAR() {
@@ -463,7 +462,6 @@ public class ControladorContratos implements Serializable {
     public void cmdAceptaCliente(ActionEvent event) {
         cliente = new Integer(((UIParameter) event.getComponent().getFacet("id")).getValue().toString());
         objeto.LeerCliente(cliente);
-        this.representante = objeto.getClientes().getRepresentante().getId();
         swMantenimiento = false;
         swNUEVOAVISO = true;
         swMODIFICAR = true;
