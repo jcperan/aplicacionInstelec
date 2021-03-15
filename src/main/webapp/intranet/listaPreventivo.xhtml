@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Lorca Instelec</title>
+                <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <meta name="apple-mobile-web-app-capable" content="yes"/>
+                <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+                <meta http-equiv="cache-control" content="max-age=0" />
+                <meta http-equiv="cache-control" content="no-cache" />
+                <meta http-equiv="expires" content="0" />
+                <meta http-equiv="expires" content="Tue, 01 Jan 2000 1:00:00 GMT" />
+                <meta http-equiv="pragma" content="no-cache" /> 
+            </f:facet>
+            <h:outputStylesheet name="estilo.css" />
+        </h:head>
+
+        <h:body>
+
+            <h:form id="formulario">
+
+                <p:layout fullPage="true">
+
+                    <p:layoutUnit position="north" size="130" resizable="false" closable="false" collapsible="false" styleClass="header">
+                        <table width="100%" height="100%" class="headerTabla">
+                            <tr>
+                                <td valign="top">
+                                    <p:inputText value="#{controladorIntranet.nombreRepresentante}" size="40" readonly="true" />
+                                </td>
+                                <td rowspan="2">
+                                    <img src="#{facesContext.externalContext.requestContextPath}/resources/instelec.png" style="float: right;" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p:commandButton value="Salir" action="/login.xhtml" />
+                                </td>
+                            </tr>
+                        </table>
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="west" size="25%" header="Lista de Clientes" collapsible="true">
+
+
+                        <ul id="listaClientes" data-role="listview" data-inset="true" style="padding: 0px !important;" >
+                            <p:dataList value="#{controladorIntranet.listaClientes}" var="lista" paginator="false" emptyMessage="No existen Clientes"  >
+                                <p:commandLink actionListener="#{controladorIntranet.botonCliente}" update="formulario:panelDatos" >
+                                    <f:facet name="id">
+                                        <f:param value="#{lista.id}" />
+                                    </f:facet>
+
+                                    <h:outputText id="lbNombre" styleClass="titulo" value="#{lista.nombre}" />
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="25px">
+                                                <h:graphicImage value="/recursos/iconos/cliente.png"/>
+                                            </td>
+                                            <td width="5px"></td>
+                                            <td>
+                                                <div class="izquierda">
+                                                    <h:outputText styleClass="texto" value="#{lista.direccion}" />
+                                                </div>
+                                                <div class="izquierda">
+                                                    <h:outputText styleClass="texto" value="#{lista.codpostal}, #{lista.poblacion}" />
+                                                </div>
+                                                <div class="izquierda">
+                                                    <h:outputText styleClass="texto" value="#{lista.provincia}" />
+                                                </div>
+                                                <div class="clear"></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </p:commandLink>
+                            </p:dataList>
+                        </ul>
+
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="center" header="Datos Generales">
+
+                        <p:panel id="panelDatos" style="height:100%" >
+
+                            <p:tabView>
+                                <p:tab title="Datos Generales" >
+                                    <div>
+                                        <table width="100%">
+                                            <tr>
+                                                <td>
+                                                    <p:inputText size="50" readonly="true" value="#{controladorIntranet.cliente.nombre}" />
+                                                </td>
+                                                <td align="center" rowspan="5">
+                                                    <p:graphicImage id="imagen" value="#{controladorIntranet.cliente.imagen}" cache="false"
+                                                                    style="width:100%;min-height: 30px;border:solid black"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p:inputText size="50" readonly="true" value="#{controladorIntranet.cliente.direccion}" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p:inputText size="5" readonly="true" value="#{controladorIntranet.cliente.codpostal}" />_
+                                                    <p:inputText size="36" readonly="true" value="#{controladorIntranet.cliente.poblacion}" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p:inputText size="50" readonly="true" value="#{controladorIntranet.cliente.provincia}" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p:commandButton value="Nuevo Aviso" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><p:separator/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+
+                                                </td>
+                                            </tr>                                
+                                        </table>
+                                    </div>
+                                </p:tab>
+                                <p:tab title="Documentación">
+                                    <p:dataList value="#{controladorClientes.listaFicheros}" id="listaFicheros"
+                                                var="lista" paginator="false" emptyMessage="No existen Ficheros"  >
+                                        <p:commandLink onclick="window.open('#{lista.url}');return false;" >
+                                            <f:facet name="url">
+                                                <f:param value="#{lista.url}" />
+                                            </f:facet>
+
+                                            <div class="izquierda">
+                                                <h:outputText styleClass="texto" value="#{lista.nombre}" />
+                                            </div>
+                                            <br/>
+                                        </p:commandLink>
+                                    </p:dataList>
+                                </p:tab>
+                                <p:tab title="Trabajos Realizados">
+                                    <p:dataList value="#{controladorIntranet.listaTrabajos}" var="lista" paginator="false" emptyMessage="No existen Trabajos"  >
+                                        <p:commandLink actionListener="#{controladorIntranet.botonTrabajo}" >
+                                            <f:facet name="id">
+                                                <f:param value="#{lista.id}" />
+                                            </f:facet>
+
+                                            <f:facet name="{Exporters}">
+                                                <div style="float:right;padding-top: 5px;">
+                                                    <h:commandLink>
+                                                        <p:graphicImage name="/demo/images/excel.png" width="24"/>
+                                                        <p:dataExporter type="xls" target="tbl" fileName="cars" />
+                                                    </h:commandLink>                                            
+                                                </div>
+                                            </f:facet>
+
+                                            <div class="izquierda">
+                                                <h:outputText styleClass="texto" value="#{lista.fecha}" >
+                                                    <f:convertDateTime pattern="dd-MMM-yyyy" />
+                                                </h:outputText>
+                                            </div>
+                                            <div class="izquierda">
+                                                <h:outputText styleClass="texto" value="Motivo: #{lista.motivos.motivo}" />
+                                            </div>
+                                            <div class="izquierda">
+                                                <h:outputText styleClass="texto" value="Trabajo Realizado: #{lista.trabajos.trabajo}" />
+                                            </div>
+                                            <div class="izquierda">
+                                                <h:outputText styleClass="texto" value="#{lista.observaciones}" />
+                                            </div>
+                                            <div class="clear"></div>
+                                            
+                                        </p:commandLink>
+                                    </p:dataList>
+                                </p:tab>
+                            </p:tabView>
+
+                        </p:panel>
+
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="south" size="40" closable="false" collapsible="false" styleClass="footer" gutter="0" >
+                        <table width="100%" height="100%" class="footerTabla">
+                            <tr><td>
+                                    <p:outputLabel styleClass="footerTexto" value="(C)Copyright 2020 Lorca Instelec" />
+                                </td></tr>
+                        </table>
+                    </p:layoutUnit>
+
+
+                </p:layout>
+            </h:form>
+        </h:body>
+
+    </f:view>
+</html>
+

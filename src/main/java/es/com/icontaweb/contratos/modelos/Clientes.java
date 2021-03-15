@@ -53,6 +53,24 @@ public class Clientes implements Serializable {
     private String observaciones;
     
     private boolean visible;
+    
+    private String ultimoCodigo;
+    private String marca;
+    private String modelo;
+    private Double pvpMando;
+    private String llaveManual;
+    private String modeloLlave;
+    private Double pvpLlave;
+    private int codificacion;
+    private int instalador;
+    private int candado;
+    private String reservaAntiguosDesde;
+    private String reservaAntiguosHasta;
+    private String reservaNuevosDesde;
+    private String reservaNuevosHasta;
+    private String reservaTarjetaMemo;
+    private String mandosIniciales;
+    private String observacionesMandos;
 
     @Transient
     private StreamedContent imagen;
@@ -306,4 +324,140 @@ public class Clientes implements Serializable {
         this.visible = visible;
     }
 
+    public String getUltimoCodigo() {
+        return ultimoCodigo;
+    }
+
+    public void setUltimoCodigo(String ultimoCodigo) {
+        this.ultimoCodigo = ultimoCodigo;
+    }
+
+    public Double getPvpMando() {
+        return pvpMando;
+    }
+
+    public void setPvpMando(Double pvpMando) {
+        this.pvpMando = pvpMando;
+    }
+
+    public String getLlaveManual() {
+        return llaveManual;
+    }
+
+    public void setLlaveManual(String llaveManual) {
+        this.llaveManual = llaveManual;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public int getCodificacion() {
+        return codificacion;
+    }
+
+    public void setCodificacion(int codificacion) {
+        this.codificacion = codificacion;
+    }
+
+    public int getInstalador() {
+        return instalador;
+    }
+
+    public void setInstalador(int instalador) {
+        this.instalador = instalador;
+    }
+
+    public int getCandado() {
+        return candado;
+    }
+
+    public void setCandado(int candado) {
+        this.candado = candado;
+    }
+
+    public String getReservaAntiguosDesde() {
+        return reservaAntiguosDesde;
+    }
+
+    public void setReservaAntiguosDesde(String reservaAntiguosDesde) {
+        this.reservaAntiguosDesde = reservaAntiguosDesde;
+    }
+
+    public String getReservaAntiguosHasta() {
+        return reservaAntiguosHasta;
+    }
+
+    public void setReservaAntiguosHasta(String reservaAntiguosHasta) {
+        this.reservaAntiguosHasta = reservaAntiguosHasta;
+    }
+
+    public String getReservaNuevosDesde() {
+        return reservaNuevosDesde;
+    }
+
+    public void setReservaNuevosDesde(String reservaNuevosDesde) {
+        this.reservaNuevosDesde = reservaNuevosDesde;
+    }
+
+    public String getReservaNuevosHasta() {
+        return reservaNuevosHasta;
+    }
+
+    public void setReservaNuevosHasta(String reservaNuevosHasta) {
+        this.reservaNuevosHasta = reservaNuevosHasta;
+    }
+
+    public String getReservaTarjetaMemo() {
+        return reservaTarjetaMemo;
+    }
+
+    public void setReservaTarjetaMemo(String reservaTarjetaMemo) {
+        this.reservaTarjetaMemo = reservaTarjetaMemo;
+    }
+
+    public String getMandosIniciales() {
+        return mandosIniciales;
+    }
+
+    public void setMandosIniciales(String mandosIniciales) {
+        this.mandosIniciales = mandosIniciales;
+    }
+
+    public String getObservacionesMandos() {
+        return observacionesMandos;
+    }
+
+    public void setObservacionesMandos(String observacionesMandos) {
+        this.observacionesMandos = observacionesMandos;
+    }
+
+    public String getModeloLlave() {
+        return modeloLlave;
+    }
+
+    public void setModeloLlave(String modeloLlave) {
+        this.modeloLlave = modeloLlave;
+    }
+
+    public Double getPvpLlave() {
+        return pvpLlave;
+    }
+
+    public void setPvpLlave(Double pvpLlave) {
+        this.pvpLlave = pvpLlave;
+    }
+    
 }

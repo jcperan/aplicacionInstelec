@@ -299,6 +299,179 @@
                                     </div>
                                 </p:dataList>
                             </p:tab>
+                            
+                            <p:tab title="Mandos">
+                                <ul>
+                                    <li>
+                                        <table width="100%">
+
+                                            <tr>
+                                                <td colspan="2">
+                                                    <p:outputLabel value = "Ultimo Codigo Mando Suministrado" styleClass="label" /><br/>
+                                                    <p:inputText size="40" maxlength="40" value="#{ControladorContratos.objeto.clientes.ultimoCodigo}" />
+                                                </td>
+                                                <td align="center">
+                                                    <p:commandButton value="Ver" />
+                                                </td>
+                                            </tr>
+                            
+                                            <tr>
+                                                <td colspan="3"><p:separator/></td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td colspan="3">
+                                                    <p:outputLabel value = "Marca Mando" styleClass="label" />
+                                                    <p:inputText size="99" maxlength="40" value="#{ControladorContratos.objeto.clientes.marca}" />
+                                                </td>
+                                            </tr>
+                            
+                                            <tr>
+                                                <td colspan="3">
+                                                    <p:outputLabel value = "Modelo Mando" styleClass="label" />
+                                                    <p:inputText size="99" maxlength="40" value="#{ControladorContratos.objeto.clientes.modelo}" />
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <p:outputLabel value = "Precio Mando" styleClass="label" /><br/>
+                                                </td>
+                                                <td colspan="2">
+                                                    <p:inputText size="10" maxlength="10" class="derecha" value="#{ControladorContratos.objeto.clientes.pvpMando}">
+                                                        <f:convertNumber pattern="###,##0.00" />
+                                                    </p:inputText>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="3"><p:separator/></td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td colspan="3">
+                                                    <p:outputLabel value = "Codigo Llave Manual" styleClass="label" />
+                                                    <p:inputText size="99" maxlength="40" value="#{ControladorContratos.objeto.clientes.llaveManual}" />
+                                                </td>
+                                            </tr>
+                            
+                                            <tr>
+                                                <td colspan="3">
+                                                    <p:outputLabel value = "Modelo Llave Manual" styleClass="label" />
+                                                    <p:inputText size="99" maxlength="40" value="#{ControladorContratos.objeto.clientes.modeloLlave}" />
+                                                </td>
+                                            </tr>
+                            
+                                            <tr>
+                                                <td>
+                                                    <p:outputLabel value = "Precio Llave Manual" styleClass="label" /><br/>
+                                                </td>
+                                                <td colspan="2">
+                                                    <p:inputText size="10" maxlength="10" class="derecha" value="#{ControladorContratos.objeto.clientes.pvpLlave}">
+                                                        <f:convertNumber pattern="###,##0.00" />
+                                                    </p:inputText>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td colspan="3"><p:separator/></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <p:outputLabel value = "Tipo Codificacion Mando" styleClass="label" />
+                                                </td>
+                                                <td colspan="2">
+                                                    <p:selectOneMenu id="selCodificacion" value="#{ControladorContratos.objeto.clientes.codificacion}" 
+                                                                     style="width:90%;" >
+                                                        <f:selectItems  value="#{controladorMandos.listaCodificaciones}" />
+                                                    </p:selectOneMenu>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>
+                                                    <p:outputLabel value = "Instalador" styleClass="label" />
+                                                </td>
+                                                <td colspan="2">
+                                                    <p:selectOneMenu id="selInstalador" value="#{ControladorContratos.objeto.clientes.instalador}" 
+                                                                     style="width:90%;" >
+                                                        <f:selectItems  value="#{controladorMandos.listaInstalador}" />
+                                                    </p:selectOneMenu>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>
+                                                    <p:outputLabel value = "Candado" styleClass="label" />
+                                                </td>
+                                                <td colspan="2">
+                                                    <p:selectOneMenu id="selCandado" value="#{ControladorContratos.objeto.clientes.candado}" 
+                                                                     style="width:90%;" >
+                                                        <f:selectItems  value="#{controladorMandos.listaCandado}" />
+                                                    </p:selectOneMenu>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td colspan="3"><p:separator/></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <p:outputLabel value = "Reserva Antiguos"  styleClass="label" />
+                                                </td>
+                                                <td>
+                                                    <p:inputText size="10" maxlength="10" value="#{ControladorContratos.objeto.clientes.reservaAntiguosDesde}" />
+                                                </td>
+                                                <td>
+                                                    <p:inputText size="10" maxlength="10" value="#{ControladorContratos.objeto.clientes.reservaAntiguosHasta}" />
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <p:outputLabel value = "Reserva Nuevos" styleClass="label" />
+                                                </td>
+                                                <td>
+                                                    <p:inputText size="10" maxlength="10" value="#{ControladorContratos.objeto.clientes.reservaNuevosDesde}" />
+                                                </td>
+                                                <td>
+                                                    <p:inputText size="10" maxlength="10" value="#{ControladorContratos.objeto.clientes.reservaNuevosHasta}" />
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="3">
+                                                    <p:outputLabel value = "Reserva tarjeta Memo" styleClass="label" />
+                                                    <p:inputText size="99" maxlength="40" value="#{ControladorContratos.objeto.clientes.reservaTarjetaMemo}" />
+                                                </td>
+                                            </tr>
+                            
+                                            <tr>
+                                                <td colspan="3">
+                                                    <p:outputLabel value = "Mandos Iniciales" styleClass="label" />
+                                                    <p:inputText size="99" maxlength="40" value="#{ControladorContratos.objeto.clientes.mandosIniciales}" />
+                                                </td>
+                                            </tr>
+                            
+                                            <tr>
+                                                <td colspan="3"><p:separator/></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="3">
+                                                    <p:inputTextarea rows="3" style="width:100%;height:60px;"
+                                                                     value="#{ControladorContratos.objeto.clientes.observacionesMandos}" />
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </li>
+                                </ul>
+                            </p:tab>
+                            
+                            
                         </p:tabView>
                     </div>
 
